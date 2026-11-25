@@ -1,5 +1,9 @@
 # 職話直說
 
+## 🔗 線上展示 (Live Demo)
+點擊前往體驗：[AI-Career-Analysis 線上版](https://ai-career-analysis-production.up.railway.app/)
+
+
 上傳文字型 PDF 履歷 → 確認與編修 → 技能自評與求職條件 → AI 產出三個有證據、有差距、有行動的職涯方向。
 共用規則見《00_總管理與共用契約》。本 README 涵蓋 S0（後端骨架 + Supabase）。
 
