@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>職涯分析｜職話直說</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/site-refresh.css">
+</head>
+<body data-page="analyzing">
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a class="logo" href="index.html">職話直說</a>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+    <ol class="steps" aria-label="流程步驟">
+      <li class="steps__item is-done"><span class="steps__num">1</span><span class="steps__label">上傳</span></li>
+      <li class="steps__item is-done"><span class="steps__num">2</span><span class="steps__label">確認</span></li>
+      <li class="steps__item is-done"><span class="steps__num">3</span><span class="steps__label">自評</span></li>
+      <li class="steps__item is-current" aria-current="step"><span class="steps__num">4</span><span class="steps__label">分析</span></li>
+      <li class="steps__item"><span class="steps__num">5</span><span class="steps__label">報告</span></li>
+    </ol>
+
+    <h1>職涯分析</h1>
+    <div id="analysis-state"></div>
+    <p id="elapsed" hidden></p>
+    <a id="edit-input" class="btn btn--secondary" href="assess.html" hidden>返回修改</a>
+    <noscript><p class="alert alert--error">請啟用 JavaScript，才能開始分析。</p></noscript>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="vendor/supabase-js-2.45.4.umd.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/analyzing.js"></script>
+</body>
+</html>

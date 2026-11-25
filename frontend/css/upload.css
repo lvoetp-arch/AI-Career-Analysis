@@ -1,0 +1,9 @@
+/* upload.html 專用（S3）。顏色與元件沿用 tokens.css / components.css。 */
+.u-wrap { width: min(100% - 2rem, 720px); margin-inline: auto; padding-block: var(--s5); }
+.u-wrap > * + * { margin-top: var(--s4); }
+.u-warn-title { font-weight: var(--fw-black); }
+.u-file { word-break: break-all; }
+.u-actions { display: flex; flex-wrap: wrap; gap: var(--s3); }
+.u-actions .btn { flex: 1 1 200px; }
+.u-busy { display: flex; align-items: center; gap: var(--s3); }
+[hidden] { display: none !important; }

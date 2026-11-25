@@ -1,0 +1,4 @@
+# hook 腳本必須是 LF，否則 Git for Windows 的 sh 會執行失敗
+scripts/hooks/* text eol=lf
+*.sh text eol=lf
+frontend/vendor/* -text

@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>元件展示｜職話直說</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<style>
+  .kit-section { padding-block: var(--s6); border-top: var(--bw) solid var(--ink); }
+  .kit-bar { display: flex; flex-wrap: wrap; gap: var(--s2); padding-block: var(--s3); }
+  .kit-frame { display: block; width: 100%; height: 80vh; background: var(--surface); border: var(--bw) solid var(--ink); }
+  .swatch { display: grid; place-items: center; min-height: 64px; font-weight: var(--fw-bold); border: var(--bw-thin) solid var(--ink); }
+  body.is-embed .kit-bar, body.is-embed .site-header { display: none; }
+</style>
+  <link rel="stylesheet" href="css/site-refresh.css">
+</head>
+<body data-page="ui-kit">
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="logo" href="ui-kit.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg>
+      <span>職話直說</span>
+    </a>
+    <button type="button" class="btn btn--secondary btn--small nav-toggle" aria-expanded="false" aria-controls="main-nav">選單</button>
+    <nav id="main-nav" class="site-nav" aria-label="主選單">
+      <a class="nav-link" href="#tokens" aria-current="page">設計規範</a>
+      <a class="nav-link" href="#steps">步驟條</a>
+      <a class="nav-link" href="#skill">技能評分</a>
+      <a class="btn btn--secondary btn--small" href="#buttons">登入 / 註冊</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <div class="kit-bar" role="group" aria-label="預覽寬度">
+    <button type="button" class="btn btn--secondary btn--small" data-w="360">手機 360</button>
+    <button type="button" class="btn btn--secondary btn--small" data-w="768">平板 768</button>
+    <button type="button" class="btn btn--secondary btn--small" data-w="1200">桌面 1200</button>
+    <button type="button" class="btn btn--secondary btn--small" data-w="">自動</button>
+  </div>
+  <div id="frame-wrap" hidden><iframe class="kit-frame" title="寬度預覽" id="kit-frame"></iframe></div>
+
+  <div id="kit">
+  <section class="kit-section" id="tokens">
+    <h1>元件展示</h1>
+    <p>職話直說的共用元件。以下內容皆為虛構範例。</p>
+    <h2>色彩</h2>
+    <div class="grid grid--3">
+      <div class="swatch" style="background:var(--bg)">背景米色</div>
+      <div class="swatch" style="background:var(--surface)">卡片面</div>
+      <div class="swatch" style="background:var(--ink);color:var(--surface)">墨色</div>
+      <div class="swatch" style="background:var(--yellow)">黃</div>
+      <div class="swatch" style="background:var(--pink)">粉</div>
+      <div class="swatch" style="background:var(--red)">紅（只當底色）</div>
+    </div>
+    <h2 style="margin-top:var(--s5)">字級</h2>
+    <h1>履歷不是你的全部。</h1><h2>標題二 Noto Sans TC 900</h2><h3>標題三</h3><p>內文 400／500，行高 1.65，每行不超過 40 字。<span class="mark">標示重點</span>用黃色底線。</p>
+  </section>
+
+  <section class="kit-section" id="buttons">
+    <h2>按鈕</h2>
+    <div class="row">
+      <button class="btn btn--primary">丟履歷進來</button>
+      <button class="btn btn--secondary">先看範例報告</button>
+      <button class="btn btn--danger">刪除我的資料</button>
+      <button class="btn btn--primary" disabled>停用</button>
+      <button class="btn btn--primary is-loading" aria-busy="true">分析中</button>
+    </div>
+    <p class="text-muted" style="margin-top:var(--s3)">紅色按鈕用墨字；危險按鈕用深紅底配淺字。</p>
+  </section>
+
+  <section class="kit-section" id="steps">
+    <h2>步驟條</h2>
+    <p class="text-muted">手機只顯示目前步驟文字，桌面顯示全部。</p>
+    <ol class="steps" aria-label="流程步驟">
+      <li class="steps__item is-done"><span class="steps__num">✓</span><span class="steps__label">上傳<span class="sr-only">（已完成）</span></span></li>
+      <li class="steps__item is-current" aria-current="step"><span class="steps__num">2</span><span class="steps__label">確認</span></li>
+      <li class="steps__item"><span class="steps__num">3</span><span class="steps__label">自評</span></li>
+      <li class="steps__item"><span class="steps__num">4</span><span class="steps__label">分析</span></li>
+      <li class="steps__item"><span class="steps__num">5</span><span class="steps__label">報告</span></li>
+    </ol>
+  </section>
+
+  <section class="kit-section" id="forms">
+    <h2>表單與檔案拖放</h2>
+    <div class="grid grid--2">
+      <div>
+        <div class="field"><label class="field__label" for="f1">想應徵的職稱</label><input class="input" id="f1" type="text" value="專案專員"><p class="field__hint">可以填一個你有興趣的方向。</p></div>
+        <div class="field field--error"><label class="field__label" for="f2">公司名稱</label><input class="input" id="f2" type="text" aria-invalid="true" aria-describedby="f2e"><p class="field__error" id="f2e"><span class="sr-only">錯誤：</span>這一欄不能空白。</p></div>
+        <div class="field"><label class="field__label" for="f3">補充說明</label><textarea class="textarea" id="f3"></textarea></div>
+      </div>
+      <div class="stack">
+        <label class="dropzone" id="dz1"><span id="dz1-svg"></span><span class="dropzone__title">把 PDF 拖到這裡</span><span class="text-muted">或點一下選檔（文字型 PDF，10 MB 內）</span><input type="file" accept="application/pdf"></label>
+        <label class="dropzone has-file"><span class="dropzone__title">範例履歷.pdf 已選好</span><input type="file" accept="application/pdf"></label>
+        <label class="dropzone is-error"><span class="dropzone__title">這不是 PDF 檔</span><span>請換成 PDF 再試一次。</span><input type="file" accept="application/pdf"></label>
+      </div>
+    </div>
+  </section>
+
+  <section class="kit-section" id="alerts">
+    <h2>提示條</h2>
+    <div class="stack" id="alerts-box"></div>
+  </section>
+
+  <section class="kit-section" id="cards">
+    <h2>卡片、貼紙、手風琴</h2>
+    <div class="grid grid--2">
+      <div class="card"><p class="card__eyebrow">步驟 3</p><h3>誠實打分，不用客氣</h3><p>卡片有 3px 墨色邊框與 6px 硬陰影。</p></div>
+      <div class="stack">
+        <div class="sticker-card sticker-card--yellow tilt-l"><p class="sticker-card__num">1</p><strong>上傳履歷</strong><br>文字型 PDF（可旋轉）</div>
+        <div class="sticker-card sticker-card--pink"><p class="sticker-card__num">2</p><strong>確認與編修</strong><br>不旋轉版本</div>
+        <div class="row"><span class="tag">不廢話的履歷分析</span><span class="tag tag--yellow">範例</span><span class="tag tag--ink">草稿</span></div>
+      </div>
+    </div>
+    <div style="margin-top:var(--s5)">
+      <details class="accordion" open><summary>工作經歷</summary><div class="accordion__body">虛構範例：在一家小型公司負責活動統籌。</div></details>
+      <details class="accordion"><summary>技能</summary><div class="accordion__body">收合狀態可用鍵盤 Enter／空白鍵開關。</div></details>
+    </div>
+  </section>
+
+  <section class="kit-section" id="skill">
+    <h2>技能評分列</h2>
+    <div class="card" id="skills-box"></div>
+  </section>
+
+  <section class="kit-section" id="evidence">
+    <h2>證據強弱與進度條</h2>
+    <div class="card stack">
+      <div class="evidence"><span class="evidence__tag evidence__tag--full">充分</span><p class="evidence__text">利害關係人簡報：履歷中有兩段具體經歷。</p></div>
+      <div class="evidence"><span class="evidence__tag evidence__tag--partial">部分</span><p class="evidence__text">產品路線圖規劃：只有一段提及，缺少成果。</p></div>
+      <div class="evidence"><span class="evidence__tag evidence__tag--missing">不足</span><p class="evidence__text">資料查詢：履歷裡找不到證據。</p></div>
+      <div>
+        <p><strong>證據摘要：5 項中有 3 項充分</strong></p>
+        <div class="progress" role="progressbar" aria-label="證據充分的項目" aria-valuemin="0" aria-valuemax="5" aria-valuenow="3"><div class="progress__fill" style="--fill:3;--max:5"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="kit-section" id="marquee"><h2>跑馬燈</h2><p class="text-muted">滑鼠移上去或按「暫停」會停下；系統設定減少動態時改為靜態。</p><div class="marquee" aria-label="流程：上傳、確認、自評、分析、報告"><div class="marquee__track"><div class="marquee__group"><span class="marquee__item">1. 上傳履歷</span><span class="marquee__item">2. 確認與編修</span><span class="marquee__item">3. 自評與偏好</span><span class="marquee__item">4. 分析等待</span><span class="marquee__item">5. 分析報告</span><span class="marquee__item">1. 上傳履歷</span><span class="marquee__item">2. 確認與編修</span><span class="marquee__item">3. 自評與偏好</span><span class="marquee__item">4. 分析等待</span><span class="marquee__item">5. 分析報告</span></div><div class="marquee__group" aria-hidden="true"><span class="marquee__item">1. 上傳履歷</span><span class="marquee__item">2. 確認與編修</span><span class="marquee__item">3. 自評與偏好</span><span class="marquee__item">4. 分析等待</span><span class="marquee__item">5. 分析報告</span><span class="marquee__item">1. 上傳履歷</span><span class="marquee__item">2. 確認與編修</span><span class="marquee__item">3. 自評與偏好</span><span class="marquee__item">4. 分析等待</span><span class="marquee__item">5. 分析報告</span></div></div><button type="button" class="marquee__pause" aria-pressed="false">暫停</button></div></section>
+
+  <section class="kit-section" id="states">
+    <h2>載入、空白、錯誤、成功</h2>
+    <div class="grid grid--2"><div id="st-loading"></div><div id="st-empty"></div><div id="st-error"></div><div id="st-success"></div></div>
+  </section>
+
+  <section class="kit-section" id="overlays">
+    <h2>Toast 與確認對話框</h2>
+    <div class="row">
+      <button class="btn btn--secondary" id="t-info">資訊 Toast</button>
+      <button class="btn btn--secondary" id="t-ok">成功 Toast</button>
+      <button class="btn btn--secondary" id="t-err">錯誤 Toast</button>
+      <button class="btn btn--danger" id="dlg">開啟確認對話框</button>
+    </div>
+    <p id="dlg-result" class="text-muted" role="status"></p>
+  </section>
+  </div>
+</main>
+
+<footer style="background:var(--yellow);border-top:var(--bw) solid var(--ink);padding-block:var(--s5);margin-top:var(--s7)">
+  <div class="container row" style="justify-content:space-between"><span>你的履歷只拿來做這份分析。不爽隨時刪。</span><strong>職話直說 ©2026</strong></div>
+</footer>
+
+<script src="js/ui.js"></script>
+<script>
+(function () {
+  var q = function (s) { return document.querySelector(s); };
+  if (location.search.indexOf('embed=1') > -1) document.body.classList.add('is-embed');
+  q('#dz1-svg').replaceChildren(UI.icon('file'));
+  UI.initDropzone(q('#dz1'), { onFiles: function (f) { UI.toast('收到檔案：' + f[0].name); } });
+
+  [['info', '資訊', '分析約需 1 分鐘，請不要關閉頁面。'], ['warn', '注意', '履歷中沒有找到技能欄位，可以手動新增。'],
+   ['error', '錯誤', '檔案無法讀取，請換一份文字型 PDF。'], ['success', '成功', '資料已確認，原始檔案已刪除。']].forEach(function (a) {
+    q('#alerts-box').appendChild(UI.el('div', { class: 'alert alert--' + a[0], role: a[0] === 'error' ? 'alert' : null }, [
+      UI.icon(a[0]), UI.el('div', {}, [UI.el('p', { class: 'alert__title', text: a[1] }), UI.el('p', { text: a[2] })])]));
+  });
+
+  var skills = [['溝通協調', 4], ['資料分析', 2], ['專案管理', 0]];
+  skills.forEach(function (s, i) {
+    var opts = [1, 2, 3, 4, 5].map(function (n) {
+      return UI.el('label', { class: 'skill__opt' }, [
+        UI.el('input', { type: 'radio', name: 'sk' + i, value: n, checked: n === s[1] ? true : null, 'aria-label': s[0] + ' ' + n + ' 分' }),
+        UI.el('span', { text: String(n) })]);
+    });
+    q('#skills-box').appendChild(UI.el('fieldset', { class: 'skill' }, [
+      UI.el('legend', { class: 'skill__name', text: s[0] }), UI.el('div', { class: 'skill__scale' }, opts),
+      UI.el('p', { class: 'skill__hint', text: '1＝剛接觸，3＝能獨立完成，5＝能教別人' })]));
+  });
+
+  UI.renderState(q('#st-loading'), 'loading', { message: '正在讀取你的履歷。' });
+  UI.renderState(q('#st-empty'), 'empty', { message: '上傳履歷後，分析結果會出現在這裡。', actionText: '去上傳' });
+  UI.renderState(q('#st-error'), 'error', { title: '分析沒有完成', message: '輸入都還在，可以直接重試。', actionText: '重試' });
+  UI.renderState(q('#st-success'), 'success', { message: '三個方向已經準備好。' });
+
+  q('#t-info').onclick = function () { UI.toast('已儲存草稿'); };
+  q('#t-ok').onclick = function () { UI.toast('已確認', { type: 'success' }); };
+  q('#t-err').onclick = function () { UI.toast('上傳失敗，請再試一次', { type: 'error' }); };
+  q('#dlg').onclick = function () {
+    UI.confirmDialog({ title: '刪除所有資料？', message: '履歷、自評與報告都會刪除，帳號會保留。', confirmText: '刪除', danger: true })
+      .then(function (ok) { q('#dlg-result').textContent = ok ? '你按了「刪除」。' : '你取消了。'; });
+  };
+
+  var wrap = q('#frame-wrap'), frame = q('#kit-frame');
+  document.querySelectorAll('[data-w]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var w = b.getAttribute('data-w');
+      if (!w) { wrap.hidden = true; q('#kit').hidden = false; return; }
+      frame.src = 'ui-kit.html?embed=1'; frame.style.maxWidth = w + 'px'; wrap.hidden = false; q('#kit').hidden = true;
+    });
+  });
+})();
+</script>
+</body>
+</html>

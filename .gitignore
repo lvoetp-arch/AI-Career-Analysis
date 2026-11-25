@@ -1,0 +1,40 @@
+# --- 機密與環境 ---
+.env
+# 前端的本機設定（真實的 Supabase 網址與公開金鑰），不進版控
+frontend/js/config.local.js
+.env.*
+!.env.example
+
+# --- 履歷與個資（只存在本機，不進版控）---
+test-resumes/
+# 避免誤提交履歷。確實要提交的文件 PDF（僅限 docs/）請用：git add -f docs/xxx.pdf
+*.pdf
+
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.coverage
+htmlcov/
+
+# --- 日誌與暫存 ---
+*.log
+logs/
+supabase/.temp/
+supabase/.branches/
+
+# --- 編輯器 / 系統 ---
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# --- 最後面 ---
+*.psd
+UI/
+UI mobile/
+
+__pycache__/
+.pytest_cache/

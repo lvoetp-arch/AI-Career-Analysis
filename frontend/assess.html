@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>技能自評與求職偏好｜職話直說</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/assess.css">
+  <link rel="stylesheet" href="css/site-refresh.css">
+</head>
+<body data-page="assess">
+  <header class="site-header">
+    <div class="site-header__inner as-wrap" style="padding-block:var(--s3)">
+      <a class="logo" href="index.html">職話直說</a>
+    </div>
+  </header>
+
+  <main class="as-wrap" id="main">
+    <ol class="steps" aria-label="流程步驟">
+      <li class="steps__item is-done"><span class="steps__num">1</span><span class="steps__label">上傳</span></li>
+      <li class="steps__item is-done"><span class="steps__num">2</span><span class="steps__label">確認</span></li>
+      <li class="steps__item is-current" aria-current="step"><span class="steps__num">3</span><span class="steps__label">自評</span></li>
+      <li class="steps__item"><span class="steps__num">4</span><span class="steps__label">分析</span></li>
+      <li class="steps__item"><span class="steps__num">5</span><span class="steps__label">報告</span></li>
+    </ol>
+
+    <h1>技能自評與求職偏好</h1>
+    <p class="as-lead">自評是你自己的判斷，系統不會把它當成已證實的能力；分析時會和履歷上的證據分開呈現。</p>
+
+    <div id="state"></div>
+    <noscript><p class="alert alert--error" role="alert">這個頁面需要開啟 JavaScript 才能使用。</p></noscript>
+
+    <div id="editor" hidden>
+      <div id="as-errors" class="alert alert--error" role="alert" tabindex="-1" hidden></div>
+
+      <section class="as-section" aria-labelledby="h-goal">
+        <h2 id="h-goal">你目前的方向</h2>
+        <div id="goal-host"></div>
+      </section>
+
+      <section class="as-section" id="sec-skills" aria-labelledby="h-skills" tabindex="-1">
+        <h2 id="h-skills">技能自評</h2>
+        <p class="as-note">每項請選 1–5 級；不想評的按「不評這項」，它就不會進入分析。</p>
+        <div id="levels-host"></div>
+        <div id="few-skills"></div>
+        <p class="as-progress" id="as-progress" role="status" aria-live="polite"></p>
+        <div id="skill-groups"></div>
+        <details class="as-removed" id="removed-box" hidden>
+          <summary id="removed-summary">已選擇不評的技能</summary>
+          <ul id="removed-list" class="as-removed__list"></ul>
+        </details>
+
+        <div class="as-add">
+          <h3 class="as-add__title">加入其他技能</h3>
+          <p class="field__hint" id="add-hint">履歷沒寫、但你想評估的技能，最多加入 10 項。</p>
+          <div class="as-add__row">
+            <input class="input" id="add-name" type="text" maxlength="60" autocomplete="off" aria-describedby="add-hint add-msg" aria-label="技能名稱">
+            <button class="btn btn--secondary" id="btn-add" type="button">加入</button>
+          </div>
+          <p class="field__error" id="add-msg" role="status" aria-live="polite"></p>
+        </div>
+      </section>
+
+      <section class="as-section" id="sec-prefs" aria-labelledby="h-prefs" tabindex="-1">
+        <h2 id="h-prefs">求職偏好</h2>
+        <p class="as-note">已先帶入履歷上寫的內容；都可以修改，也可以留空。</p>
+        <div id="prefs-host"></div>
+      </section>
+    </div>
+  </main>
+
+  <div class="as-bar" id="as-bar" hidden>
+    <p class="as-bar__status" id="as-status" role="status" aria-live="polite"></p>
+    <div class="as-bar__actions">
+      <a class="btn btn--secondary" href="review.html">上一步</a>
+      <button class="btn btn--primary" id="btn-next" type="button">開始分析</button>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="vendor/supabase-js-2.45.4.umd.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/assess.js"></script>
+</body>
+</html>

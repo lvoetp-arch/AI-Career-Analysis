@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>隱私說明與同意｜職話直說</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/s2-pages.css">
+  <link rel="stylesheet" href="css/site-refresh.css">
+</head>
+<body data-page="privacy">
+<header class="site-header"><div class="container site-header__inner">
+<a class="logo" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg><span>職話直說</span></a>
+<nav class="account-nav" aria-label="主選單"><a class="nav-link" href="privacy.html">隱私說明</a><a class="nav-link" href="settings.html" data-auth="in" hidden>帳號設定</a><a class="btn btn--secondary btn--small" href="login.html" data-auth="out">登入 / 註冊</a><button type="button" class="btn btn--secondary btn--small" data-action="logout" data-auth="in" hidden>登出</button></nav>
+</div></header>
+<main class="container">
+<article class="page-wide policy">
+<h1>隱私說明</h1>
+<p class="text-muted">版本 2026-11-23。這頁用白話寫清楚：我們收什麼、不收什麼、資料會去哪裡、你怎麼把它刪掉。</p>
+<div class="test-warning" role="note"><strong>這是測試版本，請勿上傳含真實個資的履歷。</strong>目前使用免費額度，送出的內容可能被供應商用於改善產品，並由人工審閱。測試與展示請只用虛構的履歷。</div>
+
+<nav class="policy-summary" aria-label="隱私摘要">
+  <h2>先了解三件事</h2>
+  <ul><li>履歷文字會交由 AI 供應商處理。</li><li>確認資料時，系統會刪除原始 PDF，保留確認後的內容及分析報告。</li><li>你可以在帳號設定刪除網站上的資料。</li></ul>
+</nav>
+
+<h2>我們會收集什麼</h2>
+<ul>
+ <li><strong>登入用的 Email 與密碼</strong>：由登入服務（Supabase Auth）處理。Email 只用來登入，不會進入你的履歷資料，也不會送給 AI。</li>
+ <li><strong>你上傳的履歷 PDF</strong>：暫時放在私有儲存空間，只有後端用短效連結存取。</li>
+ <li><strong>從履歷解析出來的職涯內容</strong>：經歷、技能等，讓你確認與編修。</li>
+ <li><strong>你填的技能自評與求職條件。</strong></li>
+ <li><strong>AI 產出的分析報告</strong>：連同當時使用的資料快照，之後你再修改履歷也不會改變舊報告。</li>
+ <li><strong>同意紀錄</strong>：你同意了哪個版本、什麼時候同意。</li>
+ <li><strong>每日使用次數</strong>：只用來限制每天的上傳與分析次數。</li>
+</ul>
+
+<h2>我們不收集什麼</h2>
+<p>下列資料不會存進資料庫，也不會放進解析後的結構化資料（解析階段送出的履歷全文另見下一節）：</p>
+<ul class="chip-list"><li>姓名</li><li>性別</li><li>年齡／生日</li><li>役別</li><li>婚姻／家庭</li><li>照片</li><li>電話</li><li>Email</li><li>住址</li><li>身分證字號</li><li>國籍</li><li>宗教</li><li>健康狀況</li><li>就業狀態</li><li>交通工具</li><li>聯絡時段</li></ul>
+<p>請留意兩件事：</p>
+<ul>
+ <li>你登入用的 Email 屬於帳號，不屬於履歷資料；上表的「Email」指的是履歷資料裡不收錄。</li>
+ <li>履歷原文如果寫了這些內容（例如姓名），它們還是在你的 PDF 裡。系統只把「格式固定」的個資先遮蔽，姓名無法可靠遮蔽，見下一節。</li>
+</ul>
+
+<h2>履歷文字會傳給 AI 供應商</h2>
+<ul>
+ <li>目前的供應商是 <strong>Google（Gemini）</strong>，使用的是<strong>免費額度</strong>。依供應商免費額度的條款，<strong>送出的內容可能被供應商用於改善產品，並由人工審閱</strong>；條款也要求不要送出敏感或個人資訊。</li>
+ <li><strong>解析階段（你上傳履歷後立刻發生）送出的內容是「履歷全文」。</strong>送出前，系統會先遮蔽電話、Email、住址、身分證字號，以及帶個資標籤的整行（例如性別、生日、婚姻）；網址會換成代號；姓名依你選填的寫法遮蔽（見下一項）。<strong>遮蔽之後，履歷全文裡仍然包含公司名稱、學校名稱、專案內容與自傳內容</strong>，這些會原樣送出。</li>
+ <li><strong>姓名：</strong>上傳時可以選填「你的姓名寫法」（最多 3 種）。系統只在記憶體中把這些寫法換成「[姓名]」再送出，<strong>你填的姓名不會被儲存</strong>，也不會寫進日誌。<strong>姓名無法可靠遮蔽，可能會原樣送出</strong>：留空時姓名不會被遮蔽；暱稱、只寫姓氏或不同拼音的寫法也遮不到。</li>
+ <li>規則遮蔽只認得格式固定的內容，仍會漏掉一些，例如寫在自傳句子裡的年齡、婚姻或家庭狀況，以及沒有路名或街名的地址。</li>
+ <li><strong>分析階段（產生報告時）</strong>送出的是你確認後的結構化資料（不含上面「我們不收集什麼」的項目），其中公司名稱與學校名稱會先換成代號，報告顯示時再還原。</li>
+ <li>資料送到供應商之後如何處理，依該供應商自己的條款，我們沒辦法替你在對方那邊刪除。</li>
+ <li>如果日後更換供應商或方案（例如改用付費方案），本說明會更新，並請你重新同意。</li>
+</ul>
+
+<h2>原始檔案什麼時候刪除</h2>
+<ul>
+ <li>你在「確認與編修」按下確認時，系統會嘗試刪除原始 PDF。若畫面顯示刪除失敗，選擇「回去繼續修改」，再按「確認並繼續」重試。</li>
+ <li>如果刪除失敗，系統會記錄並自動重試，不會默默放著。</li>
+ <li>系統日誌只記錄錯誤代碼、次數和耗時，不記錄履歷內容或 AI 的輸入輸出。</li>
+</ul>
+
+<h2>輸出的性質</h2>
+<p>分析結果是「值得探索的方向」，不是職缺保證，也不預測錄取機率。系統不評論年資長短、空窗期、轉職頻率或年齡，也不提供薪資行情。</p>
+
+<h2>如何刪除你的資料</h2>
+<p>登入後到<a href="settings.html">帳號設定</a>，按「刪除我的資料」，輸入「刪除」確認即可。會刪除上列所有資料與檔案；帳號本身（Email 與密碼）會保留，你可以再次使用。</p>
+
+<section class="card" id="consent-card" data-privacy-version="2026-11-23" aria-labelledby="consent-h" style="margin-top:2rem">
+ <h2 id="consent-h" style="margin-top:0">同意</h2>
+ <div id="state"></div>
+ <div id="need-login" hidden><p>請先登入，才能送出同意。</p><a class="btn btn--primary" id="login-link" href="login.html?next=privacy.html">登入 / 註冊</a></div>
+ <form id="f" hidden novalidate>
+  <div class="check-row"><input type="checkbox" id="agree" aria-describedby="agree-err"><label for="agree">我已讀過上面的說明，了解這是測試版本、履歷全文（含公司、學校與自傳內容）會傳給 Google（Gemini）處理，免費額度下可能被供應商用於改善產品並由人工審閱，並同意用於產出我的職涯分析。</label></div>
+  <p class="field__error" id="agree-err" role="alert" hidden>請先勾選同意，才能繼續。</p>
+  <div class="form-actions"><button type="submit" class="btn btn--primary" id="go">同意並繼續</button></div>
+ </form>
+</section>
+</article></main>
+<footer class="site-footer"><div class="container"><p>履歷文字會傳給 AI 供應商處理；系統在確認時刪除原始檔案，若失敗可重試；你可以隨時刪除全部資料。<a href="privacy.html">看隱私說明</a></p><strong>職話直說 ©2026</strong></div></footer>
+<script src="js/config.js"></script>
+<script src="vendor/supabase-js-2.45.4.umd.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/s2-common.js"></script>
+<script>
+(function () {
+  var f = document.getElementById('f'), go = document.getElementById('go'), state = document.getElementById('state');
+  var needLogin = document.getElementById('need-login'), err = document.getElementById('agree-err');
+  var next = S2.safeNext(S2.param('next'), 'upload.html');
+  var displayedVersion = document.getElementById('consent-card').dataset.privacyVersion;
+  var currentVersion = null;
+  function note(type, text) {
+    state.textContent = '';
+    var d = document.createElement('div'); d.className = 'alert alert--' + type; d.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    var p = document.createElement('p'); p.textContent = text; d.appendChild(p); state.appendChild(d);
+  }
+  function fmt(iso) { try { return new Date(iso).toLocaleString('zh-TW'); } catch (e) { return ''; } }
+  Auth.ready.then(function () {
+    if (!Auth.isLoggedIn()) { needLogin.hidden = false; return; }
+    UI.renderState(state, 'loading', { title: '讀取中…' });
+    Api.get('/consents/current').then(function (current) {
+      state.textContent = '';
+      if (current.version !== displayedVersion) {
+        UI.renderState(state, 'error', {
+          title: '隱私說明版本不一致', message: '請重新載入隱私說明後再繼續。',
+          actionText: '重新載入', onAction: function () { location.reload(); }
+        });
+        return;
+      }
+      currentVersion = current.version;
+      if (current.accepted_at) {
+        note('success', '你已在 ' + fmt(current.accepted_at) + ' 同意這個版本的隱私說明。');
+        var a = document.createElement('a'); a.className = 'btn btn--primary'; a.href = next; a.textContent = '繼續'; a.style.marginTop = '1rem'; state.appendChild(a);
+      } else { f.hidden = false; }
+    }, function (e) {
+      UI.renderState(state, 'error', {
+        title: '暫時讀不到同意狀態', message: Api.friendlyMessage(e),
+        actionText: '重新載入', onAction: function () { location.reload(); }
+      });
+    });
+  });
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!currentVersion) return;
+    if (!document.getElementById('agree').checked) { err.hidden = false; return; }
+    err.hidden = true; go.disabled = true; go.setAttribute('aria-busy', 'true'); go.textContent = '送出中…';
+    Api.post('/consents', { consent_type: 'privacy', version: currentVersion }).then(function () {
+      location.replace(next);
+    }, function (e2) {
+      go.disabled = false; go.removeAttribute('aria-busy'); go.textContent = '同意並繼續';
+      note('error', Api.friendlyMessage(e2));
+    });
+  });
+})();
+</script>
+</body>
+</html>

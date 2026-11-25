@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>帳號設定｜職話直說</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/s2-pages.css">
+  <link rel="stylesheet" href="css/site-refresh.css">
+</head>
+<body data-page="settings">
+<header class="site-header"><div class="container site-header__inner">
+<a class="logo" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg><span>職話直說</span></a>
+<nav class="account-nav" aria-label="主選單"><a class="nav-link" href="privacy.html">隱私說明</a><a class="nav-link" href="settings.html" data-auth="in" hidden>帳號設定</a><a class="btn btn--secondary btn--small" href="login.html" data-auth="out">登入 / 註冊</a><button type="button" class="btn btn--secondary btn--small" data-action="logout" data-auth="in" hidden>登出</button></nav>
+</div></header>
+<main class="container">
+<section class="page-wide stack" style="margin-block:2rem">
+<h1>帳號設定</h1>
+<div id="gate"></div>
+<div id="main" hidden class="stack">
+ <section class="card" aria-labelledby="acct-h"><h2 id="acct-h">帳號資訊</h2>
+  <dl class="kv"><dt>Email</dt><dd id="email"></dd></dl>
+  <button type="button" class="btn btn--secondary" data-action="logout">登出</button>
+ </section>
+ <section class="card danger-zone" aria-labelledby="del-h"><h2 id="del-h">刪除我的資料</h2>
+  <p>按下刪除後，下列內容會被永久刪除，<strong>無法復原</strong>：</p>
+  <ul>
+   <li>尚未刪除的原始履歷檔案</li>
+   <li>從履歷解析出的資料與你的編修</li>
+   <li>技能自評與求職條件</li>
+   <li>所有分析報告</li>
+   <li>隱私同意紀錄（刪除後再使用要重新同意）</li>
+   <li>每日使用次數紀錄</li>
+  </ul>
+  <p class="text-muted">不會刪除：你的帳號（Email 與密碼）。已經傳給 AI 供應商的內容，我們無法在對方那邊刪除。</p>
+  <div id="del-msg" class="alert alert--error" role="alert" hidden><p id="del-msg-text"></p></div>
+  <div id="del-ok" class="alert alert--success" role="status" hidden><p id="del-ok-text"></p></div>
+  <form id="del-form" novalidate>
+   <div class="field"><label class="field__label" for="confirm">請輸入「刪除」兩個字來確認</label><input class="input" id="confirm" type="text" autocomplete="off" aria-describedby="confirm-hint"><p class="field__hint" id="confirm-hint">輸入正確才會啟用按鈕。</p></div>
+   <button type="submit" class="btn btn--danger" id="del-go" disabled>刪除我的資料</button>
+  </form>
+ </section>
+</div>
+</section></main>
+<footer class="site-footer"><div class="container"><p>履歷文字會傳給 AI 供應商處理；系統在確認時刪除原始檔案，若失敗可重試；你可以隨時刪除全部資料。<a href="privacy.html">看隱私說明</a></p><strong>職話直說 ©2026</strong></div></footer>
+<script src="js/config.js"></script>
+<script src="vendor/supabase-js-2.45.4.umd.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/s2-common.js"></script>
+<script>
+(function () {
+  var gate = document.getElementById('gate'), main = document.getElementById('main');
+  var input = document.getElementById('confirm'), btn = document.getElementById('del-go'), form = document.getElementById('del-form');
+  var msg = document.getElementById('del-msg'), msgT = document.getElementById('del-msg-text');
+  var ok = document.getElementById('del-ok'), okT = document.getElementById('del-ok-text');
+  UI.renderState(gate, 'loading', { title: '載入中…' });
+  Auth.requireLogin().then(function (yes) {
+    if (!yes) return;
+    gate.textContent = '';
+    document.getElementById('email').textContent = Auth.getEmail() || '';
+    main.hidden = false;
+  });
+  input.addEventListener('input', function () { btn.disabled = input.value.trim() !== '刪除'; });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (input.value.trim() !== '刪除') return;
+    msg.hidden = true; ok.hidden = true; btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.textContent = '刪除中…';
+    Api.del('/me/data').then(function (r) {
+      var d = (r && r.deleted) || {};
+      okT.textContent = '已刪除：檔案 ' + (d.files || 0) + ' 份、履歷資料 ' + (d.profiles || 0) + ' 份、自評與條件 ' + (d.career_inputs || 0) + ' 份、分析報告 ' + (d.analyses || 0) + ' 份、同意紀錄 ' + (d.consents || 0) + ' 筆。';
+      ok.hidden = false; input.value = ''; btn.textContent = '刪除我的資料'; btn.removeAttribute('aria-busy');
+    }, function (err) {
+      // 失敗時不會顯示成功；已刪掉的部分不會復原，重新送出可以接著刪完。
+      msgT.textContent = Api.friendlyMessage(err) + ' 請按一次「刪除我的資料」重試。';
+      msg.hidden = false; btn.disabled = false; btn.textContent = '重試刪除'; btn.removeAttribute('aria-busy');
+    });
+  });
+})();
+</script>
+</body>
+</html>

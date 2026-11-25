@@ -1,0 +1,53 @@
+/* review.css — 確認與編修頁（S4）。表單密集頁：只保留色彩與粗框，不旋轉、不用重陰影。 */
+.rv-wrap { max-width: 880px; margin-inline: auto; padding: var(--s4) var(--s4) var(--s6); box-sizing: border-box; }
+.rv-wrap, .rv-wrap * { min-width: 0; }
+.rv-wrap { overflow-wrap: anywhere; }
+.rv-wrap .btn { min-height: var(--tap); }
+.rv-lead { margin: 0 0 var(--s4); }
+
+/* 手風琴（區塊） */
+.rv-sec { box-shadow: none; transform: none; margin-bottom: var(--s3); }
+.rv-sec > summary { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); min-height: var(--tap); }
+.rv-sec__title { font-weight: var(--fw-bold); }
+.rv-sec__count { color: var(--ink-muted); font-size: var(--fs-sm); }
+.rv-sec__badge { background: var(--warn-bg); color: var(--warn); border: var(--bw-thin) solid var(--warn); padding: 0 var(--s2); font-size: var(--fs-xs); font-weight: var(--fw-bold); }
+.rv-sec .accordion__body { display: grid; gap: var(--s4); }
+
+/* 項目（可收合的一筆） */
+.rv-items { display: grid; gap: var(--s3); }
+.rv-item { border: var(--bw-thin) solid var(--ink); background: var(--surface); }
+.rv-item > summary { cursor: pointer; padding: var(--s2) var(--s3); min-height: var(--tap); display: flex; align-items: center; font-weight: var(--fw-medium); }
+.rv-item__body { display: grid; gap: var(--s4); padding: var(--s3); border-top: var(--bw-thin) solid var(--ink); }
+.rv-item__actions { display: flex; justify-content: flex-end; }
+.rv-groupname { margin: var(--s2) 0 0; font-size: var(--fs-md); }
+
+/* 欄位排版：手機單欄、≥480px 才並排 */
+.rv-row { display: grid; gap: var(--s3); grid-template-columns: 1fr; }
+@media (min-width: 480px) { .rv-row--2 { grid-template-columns: 1fr 1fr; } .rv-row--3 { grid-template-columns: 1fr 1fr 1fr; } }
+.rv-wrap .input, .rv-wrap .select, .rv-wrap .textarea { width: 100%; box-sizing: border-box; }
+.rv-labelrow { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); }
+.rv-fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: var(--s2); }
+.rv-fieldset > legend { padding: 0; font-weight: var(--fw-bold); margin-bottom: var(--s1); }
+.rv-strlist { display: grid; gap: var(--s2); }
+.rv-strrow { display: grid; grid-template-columns: 1fr auto; gap: var(--s2); align-items: center; }
+.rv-check { display: flex; align-items: center; gap: var(--s2); min-height: var(--tap); }
+.rv-check input { width: 22px; height: 22px; flex: none; }
+.rv-checks { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s4); }
+.rv-count { font-size: var(--fs-xs); color: var(--ink-muted); text-align: right; margin: 0; }
+
+/* 提示：警示標籤（missing_flags）與柔性提示（空欄位） */
+.rv-flag { background: var(--warn-bg); color: var(--warn); border: var(--bw-thin) solid var(--warn); font: inherit; font-size: var(--fs-xs); font-weight: var(--fw-bold); padding: var(--s1) var(--s3); min-height: var(--tap); cursor: pointer; text-align: left; }
+.rv-flag:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+.rv-flaglist { display: grid; gap: var(--s2); margin-top: var(--s2); }
+.rv-soft { margin: 0; padding: var(--s2) var(--s3); background: var(--info-bg); color: var(--info); border-left: var(--bw) solid var(--info); font-size: var(--fs-sm); }
+
+/* 底部操作列（手機黏在底部） */
+.rv-bar { position: sticky; bottom: 0; z-index: 5; background: var(--surface); border-top: var(--bw) solid var(--ink); padding: var(--s3) var(--s4) calc(var(--s3) + env(safe-area-inset-bottom, 0px)); display: grid; gap: var(--s2); }
+.rv-bar > * { max-width: 880px; width: 100%; margin-inline: auto; box-sizing: border-box; }
+.rv-bar[hidden] { display: none; }
+.rv-bar__note { margin: 0; font-size: var(--fs-sm); }
+.rv-bar__status { margin: 0; font-size: var(--fs-sm); color: var(--ink-muted); min-height: 1.2em; }
+.rv-bar__status.is-dirty { color: var(--warn); font-weight: var(--fw-bold); }
+.rv-bar__actions { display: grid; grid-template-columns: 1fr 1fr; gap: var(--s2); }
+#rv-banner:not(:empty), #rv-flaglist:not(:empty) { margin-bottom: var(--s4); }
+#rv-banner ul { margin: var(--s2) 0 0; padding-left: var(--s5); }

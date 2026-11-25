@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>註冊｜職話直說</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/s2-pages.css">
+  <link rel="stylesheet" href="css/site-refresh.css">
+</head>
+<body data-page="register">
+<header class="site-header"><div class="container site-header__inner">
+<a class="logo" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg><span>職話直說</span></a>
+<nav class="account-nav" aria-label="主選單"><a class="nav-link" href="privacy.html">隱私說明</a><a class="nav-link" href="settings.html" data-auth="in" hidden>帳號設定</a><a class="btn btn--secondary btn--small" href="login.html" data-auth="out">登入 / 註冊</a><button type="button" class="btn btn--secondary btn--small" data-action="logout" data-auth="in" hidden>登出</button></nav>
+</div></header>
+<main class="container">
+<section class="page-narrow card auth-card">
+<h1>註冊</h1>
+<p class="text-muted">只需要 Email 和密碼。註冊後會請你先看過隱私說明，再開始使用。</p>
+<div id="msg" class="alert alert--error" role="alert" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v6M12 16.5v.01"/></svg><p id="msg-text"></p></div>
+<div id="ok" class="alert alert--success" role="status" hidden><p id="ok-text"></p></div>
+<form id="f" novalidate>
+ <div class="field" id="f-email"><label class="field__label" for="email">Email</label><input class="input" id="email" type="email" autocomplete="email" inputmode="email" required><p class="field__error" id="e-email" hidden></p></div>
+ <div class="field" id="f-pw"><label class="field__label" for="pw">密碼</label><input class="input" id="pw" type="password" autocomplete="new-password" aria-describedby="pwhint" required><p class="field__hint" id="pwhint">至少 8 個字元，並同時包含英文字母與數字。</p><p class="field__error" id="e-pw" hidden></p></div>
+ <div class="field" id="f-pw2"><label class="field__label" for="pw2">再輸入一次密碼</label><input class="input" id="pw2" type="password" autocomplete="new-password" required><p class="field__error" id="e-pw2" hidden></p></div>
+ <div class="form-actions"><button class="btn btn--primary" id="go" type="submit">建立帳號</button><a href="login.html">已經有帳號？登入</a></div>
+</form>
+</section></main>
+<footer class="site-footer"><div class="container"><p>履歷文字會傳給 AI 供應商處理；系統在確認時刪除原始檔案，若失敗可重試；你可以隨時刪除全部資料。<a href="privacy.html">看隱私說明</a></p><strong>職話直說 ©2026</strong></div></footer>
+<script src="js/config.js"></script>
+<script src="vendor/supabase-js-2.45.4.umd.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/s2-common.js"></script>
+<script>
+(function () {
+  var f = document.getElementById('f'), go = document.getElementById('go');
+  var msg = document.getElementById('msg'), msgText = document.getElementById('msg-text');
+  var ok = document.getElementById('ok'), okText = document.getElementById('ok-text');
+  function show(t) { msgText.textContent = t; msg.hidden = false; }
+  function fieldErr(id, t) {
+    var box = document.getElementById('f-' + id), p = document.getElementById('e-' + id);
+    box.classList.toggle('field--error', !!t); p.hidden = !t; p.textContent = t || '';
+  }
+  function busy(b) { go.disabled = b; go.classList.toggle('is-loading', b); go.setAttribute('aria-busy', String(b)); go.textContent = b ? '建立中…' : '建立帳號'; }
+  f.addEventListener('submit', function (e) {
+    e.preventDefault(); msg.hidden = true; ok.hidden = true;
+    ['email', 'pw', 'pw2'].forEach(function (k) { fieldErr(k, ''); });
+    var email = f.email.value.trim(), pw = f.pw.value, bad = false;
+    if (!email) { fieldErr('email', '請輸入 Email。'); bad = true; }
+    else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { fieldErr('email', 'Email 格式看起來不對。'); bad = true; }
+    var pwErr = Auth.checkPassword(pw);
+    if (pwErr) { fieldErr('pw', pwErr); bad = true; }
+    else if (pw !== f.pw2.value) { fieldErr('pw2', '兩次輸入的密碼不一樣。'); bad = true; }
+    if (bad) return;
+    busy(true);
+    Auth.register(email, pw).then(function (r) {
+      if (r.needsConfirm) {
+        busy(false); f.hidden = true;
+        okText.textContent = '帳號已建立。請到信箱點確認連結，完成後再回來登入。';
+        ok.hidden = false;
+        return;
+      }
+      location.replace('privacy.html?next=upload.html');
+    }, function (err) { busy(false); show(Auth.friendlyError(err)); });
+  });
+})();
+</script>
+</body>
+</html>

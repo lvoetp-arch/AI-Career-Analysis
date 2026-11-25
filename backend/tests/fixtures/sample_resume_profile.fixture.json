@@ -1,0 +1,636 @@
+{
+  "schema_version": "0.3",
+  "language": "zh-TW",
+  "basics": {
+    "headline": "個人 SaaS 專案實踐 | AI 系統導入企劃 / SaaS 專案實作 | 個人 AI 應用實踐期",
+    "links": [
+      {
+        "label": "相關連結",
+        "url": "https://stalwart-sunburst-5badbc.netlify.app/"
+      }
+    ]
+  },
+  "work_experience": [
+    {
+      "id": "work-1",
+      "company": "個人 SaaS 專案實踐",
+      "title": "產品企劃",
+      "employment_type": "unknown",
+      "kind": "self_employed",
+      "start": "2026-03",
+      "end": "2026-08",
+      "is_current": false,
+      "job_category": "產品企劃",
+      "responsibilities": [
+        "AI 輔助全端開發：運用 Claude、Cursor 與 Supabase，獨立完成需求拆解、資料庫建置到前端介面串接的系統原型",
+        "B2B 製造業報價系統：將傳產材料與加工邏輯數位化，結合 RAG 知識庫",
+        "B2C 邏輯運算系統（Akashicnavi）",
+        "O2O 掃碼點餐系統（MiniEats）"
+      ],
+      "tools_used": [
+        "Claude",
+        "Cursor",
+        "Supabase",
+        "RAG"
+      ],
+      "related_project_ids": [
+        "project-1",
+        "project-2",
+        "project-3"
+      ]
+    },
+    {
+      "id": "work-2",
+      "company": "逆轉生命科技有限公司",
+      "title": "數位內容開發",
+      "employment_type": "unknown",
+      "kind": "employment",
+      "start": "2025-10",
+      "end": "2026-02",
+      "is_current": false,
+      "industry": "其他醫療保健服務業",
+      "job_category": "社群行銷",
+      "location": "台中市北屯區",
+      "responsibilities": [
+        "推動公司貼圖部門所產出的 Line 貼圖",
+        "AI 影片產出",
+        "管理 FB、YouTube、IG、TikTok 的發文與數據",
+        "規劃與建置公司官方網站"
+      ]
+    },
+    {
+      "id": "work-3",
+      "company": "個人接案與 AI 應用進修期",
+      "title": "數位內容創作者 / AI 影像生成研究",
+      "employment_type": "freelance",
+      "kind": "freelance",
+      "start": "2025-01",
+      "end": "2025-10",
+      "is_current": false,
+      "industry": "電腦軟體服務業",
+      "job_category": "影片製作技術人員",
+      "responsibilities": [
+        "操作 Veo3、Sora、Pollo AI、Suno 等影像與音樂 AI 軟體",
+        "獨立完成從發想、寫腳本、AI 產出素材到剪輯的影音製作",
+        "經營個人 YouTube 頻道",
+        "考取職業小型車駕照"
+      ]
+    },
+    {
+      "id": "work-4",
+      "company": "健喬健康科技有限公司",
+      "title": "電話行銷人員",
+      "employment_type": "unknown",
+      "kind": "employment",
+      "start": "2024-05",
+      "end": "2024-11",
+      "is_current": false,
+      "industry": "其他醫療保健服務業",
+      "company_size": "30~100人",
+      "job_category": "電話行銷人員",
+      "location": "台中市北屯區",
+      "responsibilities": [
+        "電話銷售"
+      ]
+    },
+    {
+      "id": "work-5",
+      "company": "富邦媒體科技股份有限公司",
+      "title": "電話行銷員",
+      "employment_type": "unknown",
+      "kind": "employment",
+      "start": "2023-11",
+      "end": "2024-04",
+      "is_current": false,
+      "industry": "百貨相關業",
+      "company_size": "500人以上",
+      "job_category": "內勤業務",
+      "location": "台中市南屯區",
+      "responsibilities": [
+        "電話行銷/陌生開發"
+      ]
+    },
+    {
+      "id": "work-6",
+      "company": "大吉甜芯純素甜點",
+      "title": "行銷人員",
+      "employment_type": "unknown",
+      "kind": "self_employed",
+      "start": "2023-03",
+      "end": "2023-11",
+      "is_current": false,
+      "job_category": "產品行銷企劃",
+      "responsibilities": [
+        "產品行銷、網站上架及經營、攝影美編"
+      ]
+    },
+    {
+      "id": "work-7",
+      "company": "浤睿國際股份有限公司",
+      "title": "設計工程師",
+      "employment_type": "unknown",
+      "kind": "employment",
+      "start": "2021-03",
+      "end": "2023-03",
+      "is_current": false,
+      "industry": "專門設計相關業",
+      "company_size": "1~30人",
+      "job_category": "工業設計師",
+      "location": "台中市太平區",
+      "responsibilities": [
+        "設計開發執行",
+        "網站架站執行",
+        "行銷規劃執行"
+      ],
+      "tags": [
+        "新產品研發與測試",
+        "網路活動規劃與執行",
+        "繪圖工具與軟體操作",
+        "網站企劃能力",
+        "產品結構評估",
+        "品牌行銷管理"
+      ]
+    },
+    {
+      "id": "work-8",
+      "company": "合昇昌國際股份有限公司",
+      "title": "設計工程師",
+      "employment_type": "unknown",
+      "kind": "employment",
+      "start": "2014-07",
+      "end": "2021-02",
+      "is_current": false,
+      "industry": "金屬家具及裝設品製造業",
+      "company_size": "1~30人",
+      "job_category": "工業設計師",
+      "location": "台中市太平區",
+      "responsibilities": [
+        "家用品設計開發",
+        "氣泡水機設計開發",
+        "官網設計規劃",
+        "行銷協助"
+      ],
+      "related_project_ids": [
+        "project-4"
+      ]
+    },
+    {
+      "id": "work-9",
+      "company": "鎂仕特股份有限公司",
+      "title": "設計工程師",
+      "employment_type": "unknown",
+      "kind": "employment",
+      "start": "2012-05",
+      "end": "2014-06",
+      "is_current": false,
+      "industry": "塑膠製品製造業",
+      "company_size": "1~30人",
+      "job_category": "機構工程師",
+      "management_scope": "管理4人以下",
+      "location": "台中市北屯區",
+      "responsibilities": [
+        "腳踏車燈設計開發",
+        "設計工程部門管理",
+        "公司產品開發/機構設計",
+        "客戶設計協同開發",
+        "主管交辦事項"
+      ]
+    },
+    {
+      "id": "work-10",
+      "company": "三鈿實業股份有限公司",
+      "title": "立體設計",
+      "employment_type": "unknown",
+      "kind": "employment",
+      "start": "2009-06",
+      "end": "2011-12",
+      "is_current": false,
+      "industry": "文具禮品相關業",
+      "company_size": "500人以上",
+      "job_category": "工業設計師",
+      "management_scope": "管理4人以下",
+      "location": "台中市西屯區",
+      "responsibilities": [
+        "文具/收納盒/硬殼包設計開發",
+        "市場初期研究規劃（色彩/功能/項目設定）",
+        "功能與結構創新、專案執行及控管、部門管理"
+      ]
+    },
+    {
+      "id": "work-11",
+      "company": "輝庭",
+      "title": "設計師",
+      "employment_type": "unknown",
+      "kind": "employment",
+      "start": "2006-03",
+      "end": "2008-06",
+      "is_current": false,
+      "industry": "家具及裝設品製造業",
+      "company_size": "100~500人",
+      "job_category": "工業設計師",
+      "responsibilities": [
+        "工作桌、廚房、衛浴、傢俱、家用品設計",
+        "BOM 表、成本估算",
+        "樣品進度控管"
+      ]
+    },
+    {
+      "id": "work-12",
+      "company": "巨千企業股份有限公司",
+      "title": "設計專員",
+      "employment_type": "unknown",
+      "kind": "employment",
+      "start": "2005-08",
+      "end": "2006-03",
+      "is_current": false,
+      "industry": "非金屬家具及裝設品製造業",
+      "company_size": "1~30人",
+      "job_category": "工業設計師",
+      "location": "台中市霧峰區",
+      "responsibilities": [
+        "概念設計",
+        "3D 建模",
+        "BOM 製作"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "edu-1",
+      "school": "雲林科技大學",
+      "degree": "二技",
+      "field": "工業設計系",
+      "start": "2003-09",
+      "end": "2005-07",
+      "status": "graduated"
+    },
+    {
+      "id": "edu-2",
+      "school": "亞東技術學院",
+      "degree": "二專",
+      "field": "工業設計系",
+      "start": "2001-09",
+      "end": "2003-07",
+      "status": "graduated"
+    },
+    {
+      "id": "edu-3",
+      "school": "台中高工",
+      "degree": "高職",
+      "field": "電腦機械製圖科",
+      "start": "1994-09",
+      "end": "1997-06",
+      "status": "graduated"
+    }
+  ],
+  "skills": [
+    {
+      "id": "skill-1",
+      "name": "SolidWorks",
+      "category": "3D 建模",
+      "group": "實體產品開發與機構設計",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": [
+        "work-7",
+        "work-8"
+      ]
+    },
+    {
+      "id": "skill-2",
+      "name": "Inventor",
+      "category": "3D 建模",
+      "group": "實體產品開發與機構設計",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": []
+    },
+    {
+      "id": "skill-3",
+      "name": "Keyshot",
+      "category": "渲染",
+      "group": "實體產品開發與機構設計",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": []
+    },
+    {
+      "id": "skill-4",
+      "name": "AutoCAD",
+      "category": "工程製圖",
+      "group": "實體產品開發與機構設計",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": []
+    },
+    {
+      "id": "skill-5",
+      "name": "Claude",
+      "category": "AI 工具",
+      "group": "AI 應用與 SaaS 開發",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": [
+        "work-1"
+      ]
+    },
+    {
+      "id": "skill-6",
+      "name": "Cursor",
+      "category": "AI 工具",
+      "group": "AI 應用與 SaaS 開發",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": [
+        "work-1"
+      ]
+    },
+    {
+      "id": "skill-7",
+      "name": "Windsurf",
+      "category": "AI 工具",
+      "group": "AI 應用與 SaaS 開發",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": []
+    },
+    {
+      "id": "skill-8",
+      "name": "Supabase",
+      "category": "資料庫",
+      "group": "AI 應用與 SaaS 開發",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": [
+        "work-1"
+      ]
+    },
+    {
+      "id": "skill-9",
+      "name": "RAG 知識庫整合",
+      "category": "AI 應用",
+      "group": "AI 應用與 SaaS 開發",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": [
+        "work-1"
+      ]
+    },
+    {
+      "id": "skill-10",
+      "name": "Veo3 / Sora / Pollo AI / Suno",
+      "category": "生成式 AI 影音",
+      "group": "AI 應用與 SaaS 開發",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": [
+        "work-3"
+      ]
+    },
+    {
+      "id": "skill-11",
+      "name": "Shopline / Shopee / Liteshop / Pinkoi / Wix",
+      "category": "電商平台",
+      "group": "電商平台建置與數位營運",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": [
+        "work-6",
+        "work-7"
+      ]
+    },
+    {
+      "id": "skill-12",
+      "name": "EDM 行銷、Facebook Ads、Google Ads 協作、基本 SEO",
+      "category": "數位行銷",
+      "group": "電商平台建置與數位營運",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": []
+    },
+    {
+      "id": "skill-13",
+      "name": "Capcut / Filmora / PowerDirector",
+      "category": "影片後製",
+      "group": "數位影音企劃與視覺設計",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": [
+        "work-3"
+      ]
+    },
+    {
+      "id": "skill-14",
+      "name": "Photoshop / Illustrator",
+      "category": "平面設計",
+      "group": "數位影音企劃與視覺設計",
+      "stated_level_text": null,
+      "years_text": null,
+      "linked_ids": []
+    }
+  ],
+  "projects": [
+    {
+      "id": "project-1",
+      "name": "Manufacture AI（製造業智慧報價）",
+      "role": null,
+      "description": "將傳產材料與加工邏輯數位化，結合 RAG 知識庫，縮短人工報價與風險評估時間",
+      "tech": [
+        "RAG",
+        "Supabase"
+      ],
+      "outcomes": [],
+      "source_section": "work_experience"
+    },
+    {
+      "id": "project-2",
+      "name": "AkashicNavi（個人資料分析 SaaS）",
+      "description": "將複雜多變數判斷轉為自動化流程，前端「黑箱設計」保護核心公式",
+      "tech": [],
+      "outcomes": [],
+      "source_section": "work_experience"
+    },
+    {
+      "id": "project-3",
+      "name": "MiniEats（餐飲掃碼點餐 SaaS）",
+      "description": "主打「代建菜單」解決小店缺工痛點，已投入線下 DM 推廣與實體商轉驗證",
+      "tech": [],
+      "outcomes": [],
+      "source_section": "work_experience"
+    },
+    {
+      "id": "project-4",
+      "name": "Bubblingplus 驚奇瓶",
+      "description": "改變飲品使用方式，讓自己動手做飲料更加有趣",
+      "start": "2017-01",
+      "end": "2017-07",
+      "tech": [],
+      "outcomes": [
+        "獲得 2019 台灣精品獎"
+      ],
+      "source_section": "achievements"
+    }
+  ],
+  "portfolio": [
+    {
+      "id": "portfolio-1",
+      "title": "動態作品連結",
+      "type": "website",
+      "url": "https://stalwart-sunburst-5badbc.netlify.app/",
+      "url_truncated": false
+    },
+    {
+      "id": "portfolio-2",
+      "title": "靜態作品集",
+      "type": "document",
+      "url": null,
+      "url_truncated": true,
+      "description": "Google Drive 檔案，PDF 內顯示的網址被截斷",
+      "source_text": "drive.google.com/file/d/11XJMsGsIpt_iseUFf8ZtJMSpI…"
+    }
+  ],
+  "awards": [
+    {
+      "name": "台灣精品獎",
+      "year": 2019,
+      "related_project_id": "project-4"
+    }
+  ],
+  "certifications": [
+    {
+      "name": "機械製圖丙級",
+      "issuer": null,
+      "date": null
+    },
+    {
+      "name": "普通重型機車駕照",
+      "issuer": null,
+      "date": null
+    },
+    {
+      "name": "普通小型車駕照",
+      "issuer": null,
+      "date": null
+    },
+    {
+      "name": "職業小型車駕照",
+      "issuer": null,
+      "date": null
+    }
+  ],
+  "languages": [
+    {
+      "language": "英文",
+      "listening": "中等",
+      "speaking": "略懂",
+      "reading": "中等",
+      "writing": "略懂"
+    },
+    {
+      "language": "台語",
+      "overall": "中等"
+    }
+  ],
+  "job_preferences": {
+    "desired_roles": [
+      "工業設計",
+      "機構工程師",
+      "產品管理師",
+      "全端工程師",
+      "mvp prototype原型設計",
+      "電商美編行銷",
+      "包裝出貨人員",
+      "倉儲人員"
+    ],
+    "desired_job_categories": [
+      "工業設計師",
+      "產品企劃",
+      "全端工程師",
+      "電商行銷",
+      "倉儲物流人員"
+    ],
+    "desired_industries": [
+      "一般製造業",
+      "專門設計相關業",
+      "消費性電子產品製造業",
+      "電腦軟體服務業",
+      "批發／零售／傳直銷業"
+    ],
+    "employment_types": [
+      "full_time",
+      "part_time"
+    ],
+    "work_modes": [],
+    "remote_willingness": "willing",
+    "preferred_locations": [
+      "台中市"
+    ],
+    "shift": "日班",
+    "salary_expectation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "period": "negotiable",
+      "raw_text": "面議"
+    },
+    "availability": {
+      "earliest_start": "錄取後隨時可上班",
+      "notice_period": null
+    },
+    "leave_and_schedule": null,
+    "other_conditions": []
+  },
+  "autobiography": {
+    "text": null,
+    "stated_goals": [
+      "結合過往傳產經驗與 AI 應用，做出能幫第一線省時間、解決實際問題的數位工具"
+    ],
+    "stated_motivations": [],
+    "stated_strengths": [],
+    "sections": [
+      {
+        "heading": "個人簡介",
+        "language": "zh-TW",
+        "text": "具備 14 年機構設計與製造業經驗，了解現場實務狀況。近期運用 Claude、Cursor、Supabase 等 AI 工具輔助開發，將需求快速打樣成系統原型 MVP。"
+      },
+      {
+        "heading": "經歷重點",
+        "language": "zh-TW",
+        "text": "產品開發／量產導入 14 年（OBM／ODM／OEM）；SolidWorks、外觀設計、機構設計、DFM、成本控管、專利研究申請"
+      },
+      {
+        "heading": "獨立專案",
+        "language": "zh-TW",
+        "text": "Manufacture AI、MiniEats、AkashicNavi；需求→規劃→建置→市場測試，以 vibe coding 獨立完成"
+      },
+      {
+        "heading": "目前進修",
+        "language": "zh-TW",
+        "text": "中彰投職訓局｜AI 輔助全端（補程式基礎）"
+      },
+      {
+        "heading": "Experience Highlights / Independent Projects / Current Study",
+        "language": "en",
+        "text": "（英文版，內容與中文段落重複）"
+      }
+    ]
+  },
+  "missing_flags": [
+    {
+      "field_path": "portfolio[1].url",
+      "reason": "truncated",
+      "message": "靜態作品集網址被截斷，請補上完整連結"
+    },
+    {
+      "field_path": "job_preferences.leave_and_schedule",
+      "reason": "missing",
+      "message": "履歷沒寫休假方式或工時偏好，可在下一步補充"
+    }
+  ],
+  "parse_notes": [
+    "unicode_nfkc_applied",
+    "link_annotations_checked",
+    "bilingual_sections_kept",
+    "pii_redacted_before_llm"
+  ]
+}

@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>職話直說｜履歷不是你的全部</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/s2-pages.css">
+  <link rel="stylesheet" href="css/site-refresh.css">
+</head>
+<body data-page="index">
+<header class="site-header"><div class="container site-header__inner">
+<a class="logo" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z"/></svg><span>職話直說</span></a>
+<nav class="account-nav" aria-label="主選單"><a class="btn btn--secondary btn--small" href="login.html" data-auth="out">登入 / 註冊</a><a class="nav-link" href="settings.html" data-auth="in" hidden>帳號設定</a><button type="button" class="btn btn--secondary btn--small" data-action="logout" data-auth="in" hidden>登出</button></nav></div></header>
+<main>
+<section class="container hero">
+ <div><span class="tag tilt-l" style="margin-bottom:var(--s3)">★ 不廢話的 AI 履歷分析</span>
+ <h1>履歷<span class="mark">不是</span><br>你的全部。</h1>
+ <p class="hero__lead">但它知道的，比你以為的還多。丟進來，我們幫你挖出三個你可能沒想過的方向。</p>
+ <div class="test-warning" role="note"><strong>這是測試版本，請勿上傳含真實個資的履歷。</strong>目前只適合用虛構的履歷試用。</div>
+ <div class="row"><a class="btn btn--primary" href="sample_report.html">先看範例報告</a>
+ <a class="btn btn--secondary" href="upload.html" data-requires-login>上傳測試履歷</a></div>
+ <div class="alert alert--info notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.01"/></svg><p>輸出是值得探索的方向建議，不是職缺保證，也不預測錄取機率。</p></div></div>
+ <div class="hero__stickers" aria-hidden="true">
+  <div class="sticker-card s-file tilt-l"><strong>我的履歷_最終版.pdf</strong><div style="height:8px;background:var(--bg);margin-top:10px"></div><div style="height:8px;background:var(--yellow);width:60%;margin-top:6px"></div></div>
+  <div class="sticker-card sticker-card--yellow s-yellow tilt-r2"><small>值得探索的方向…</small><p class="sticker-card__num" style="margin-top:6px">產品經理</p><small>證據：2 項充分</small></div>
+  <div class="sticker-card sticker-card--pink s-pink tilt-l2"><strong>缺了一塊</strong><br>資料查詢：履歷裡找不到證據</div>
+ </div>
+</section>
+<section class="container home-steps">
+ <h2>五步，<span class="mark">就這樣</span>。</h2>
+ <ol class="stepcards">
+  <li class="sticker-card sticker-card--yellow tilt-l"><p class="sticker-card__num">1</p><strong>上傳履歷</strong><br><small>文字型 PDF</small></li>
+  <li class="sticker-card sticker-card--pink tilt-r"><p class="sticker-card__num">2</p><strong>確認與編修</strong><br><small>修正經歷、技能</small></li>
+  <li class="sticker-card tilt-l2"><p class="sticker-card__num">3</p><strong>自評與偏好</strong><br><small>技能 1–5 分、職涯目標</small></li>
+  <li class="sticker-card sticker-card--yellow tilt-r2"><p class="sticker-card__num">4</p><strong>分析等待</strong><br><small>進度與錯誤提示</small></li>
+  <li class="sticker-card sticker-card--pink tilt-l"><p class="sticker-card__num">5</p><strong>分析報告</strong><br><small>三個方向、差距、行動</small></li>
+ </ol>
+ <div class="grid grid--2 home-demos">
+  <div class="card"><p class="card__eyebrow">步驟 3・自評</p><h3>誠實打分，不用客氣</h3>
+   <fieldset class="skill"><legend class="skill__name">溝通協調</legend><div class="skill__scale"><label class="skill__opt"><input type="radio" name="a" aria-label="溝通協調 1 分"><span>1</span></label><label class="skill__opt"><input type="radio" name="a" aria-label="溝通協調 2 分"><span>2</span></label><label class="skill__opt"><input type="radio" name="a" aria-label="溝通協調 3 分"><span>3</span></label><label class="skill__opt"><input type="radio" name="a" checked aria-label="溝通協調 4 分"><span>4</span></label><label class="skill__opt"><input type="radio" name="a" aria-label="溝通協調 5 分"><span>5</span></label></div></fieldset>
+   <fieldset class="skill"><legend class="skill__name">資料分析</legend><div class="skill__scale"><label class="skill__opt"><input type="radio" name="b" aria-label="資料分析 1 分"><span>1</span></label><label class="skill__opt"><input type="radio" name="b" checked aria-label="資料分析 2 分"><span>2</span></label><label class="skill__opt"><input type="radio" name="b" aria-label="資料分析 3 分"><span>3</span></label><label class="skill__opt"><input type="radio" name="b" aria-label="資料分析 4 分"><span>4</span></label><label class="skill__opt"><input type="radio" name="b" aria-label="資料分析 5 分"><span>5</span></label></div></fieldset>
+   <fieldset class="skill"><legend class="skill__name">簡報表達</legend><div class="skill__scale"><label class="skill__opt"><input type="radio" name="c" aria-label="簡報表達 1 分"><span>1</span></label><label class="skill__opt"><input type="radio" name="c" aria-label="簡報表達 2 分"><span>2</span></label><label class="skill__opt"><input type="radio" name="c" aria-label="簡報表達 3 分"><span>3</span></label><label class="skill__opt"><input type="radio" name="c" aria-label="簡報表達 4 分"><span>4</span></label><label class="skill__opt"><input type="radio" name="c" checked aria-label="簡報表達 5 分"><span>5</span></label></div></fieldset>
+   <fieldset class="skill">
+    <legend class="skill__name">軟體運用</legend>
+    <div class="skill__scale">
+     <label class="skill__opt"><input type="radio" name="demo-software" aria-label="軟體運用 1 分"><span>1</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-software" aria-label="軟體運用 2 分"><span>2</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-software" aria-label="軟體運用 3 分"><span>3</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-software" checked aria-label="軟體運用 4 分"><span>4</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-software" aria-label="軟體運用 5 分"><span>5</span></label>
+    </div>
+   </fieldset>
+   <fieldset class="skill">
+    <legend class="skill__name">語文能力</legend>
+    <div class="skill__scale">
+     <label class="skill__opt"><input type="radio" name="demo-language" aria-label="語文能力 1 分"><span>1</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-language" aria-label="語文能力 2 分"><span>2</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-language" checked aria-label="語文能力 3 分"><span>3</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-language" aria-label="語文能力 4 分"><span>4</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-language" aria-label="語文能力 5 分"><span>5</span></label>
+    </div>
+   </fieldset>
+   <fieldset class="skill">
+    <legend class="skill__name">專案規劃</legend>
+    <div class="skill__scale">
+     <label class="skill__opt"><input type="radio" name="demo-planning" aria-label="專案規劃 1 分"><span>1</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-planning" aria-label="專案規劃 2 分"><span>2</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-planning" aria-label="專案規劃 3 分"><span>3</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-planning" checked aria-label="專案規劃 4 分"><span>4</span></label>
+     <label class="skill__opt"><input type="radio" name="demo-planning" aria-label="專案規劃 5 分"><span>5</span></label>
+    </div>
+   </fieldset>
+  </div>
+  <div class="card"><span class="tag tag--ink" style="float:right">範例</span><p class="card__eyebrow">步驟 5・報告</p><h3>直說了：這三條路最有戲</h3>
+   <div class="report-row"><h4>#1 產品經理 <small class="text-muted">B2B SaaS</small></h4><div class="progress" role="progressbar" aria-label="證據充分的項目" aria-valuemin="0" aria-valuemax="4" aria-valuenow="2"><div class="progress__fill" style="--fill:2;--max:4"></div></div><small>證據：2 項充分、1 項部分、1 項不足</small></div>
+   <div class="report-row"><h4>#2 使用者研究員 <small class="text-muted">UX Research</small></h4><small>證據：1 項充分、2 項部分、1 項不足</small></div>
+   <div class="report-row"><h4>#3 數據分析師 <small class="text-muted">Data Analyst</small></h4><small>證據：1 項充分、1 項部分、2 項不足</small></div>
+   <div class="evidence" style="margin-bottom:var(--s2)"><span class="evidence__tag evidence__tag--full">充分</span><p class="evidence__text">利害關係人簡報</p></div>
+   <div class="evidence" style="margin-bottom:var(--s2)"><span class="evidence__tag evidence__tag--partial">部分</span><p class="evidence__text">產品路線圖規劃</p></div>
+   <div class="evidence" style="margin-bottom:var(--s4)"><span class="evidence__tag evidence__tag--missing">不足</span><p class="evidence__text">SQL 資料查詢</p></div>
+   <h4>這週就做</h4><ul class="checklist"><li>兩週內完成一個 SQL 小專案，放上作品集</li><li>把「跨部門專案」改寫成有數字的成果</li><li>約兩位現職 PM 做 30 分鐘咖啡聊聊</li></ul></div>
+ </div>
+</section></main>
+<footer class="site-footer"><div class="container"><p>履歷文字會傳給 AI 供應商處理；系統在確認時刪除原始檔案，若失敗可重試；你可以隨時刪除全部資料。<a href="privacy.html">看隱私說明</a></p><strong>職話直說 ©2026</strong></div></footer>
+<script src="js/config.js"></script>
+<script src="vendor/supabase-js-2.45.4.umd.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/api.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/s2-common.js"></script>
+</body>
+</html>

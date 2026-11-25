@@ -1,0 +1,5 @@
+#!/bin/sh
+# 提交前檢查（啟用方式見 README）。找不到 python 時改用 Windows 的 py 啟動器。
+PY=python
+command -v python >/dev/null 2>&1 || PY=py
+exec "$PY" scripts/check_no_secrets.py

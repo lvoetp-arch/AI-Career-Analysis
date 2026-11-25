@@ -1,0 +1,16 @@
+**
+!Dockerfile
+!railway.toml
+!requirements.txt
+!backend/
+!backend/app/
+!backend/app/**
+!frontend/
+!frontend/**
+!scripts/
+!scripts/start_railway.py
+
+**/.env
+**/.env.*
+**/__pycache__/
+frontend/js/config.local.js

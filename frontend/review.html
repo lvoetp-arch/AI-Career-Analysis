@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>確認履歷內容｜職話直說</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/review.css">
+  <link rel="stylesheet" href="css/site-refresh.css">
+</head>
+<body data-page="review">
+  <header class="site-header">
+    <div class="site-header__inner rv-wrap" style="padding-block:var(--s3)">
+      <a class="logo" href="index.html">職話直說</a>
+    </div>
+  </header>
+
+  <main class="rv-wrap" id="main">
+    <ol class="steps" aria-label="流程步驟">
+      <li class="steps__item is-done"><span class="steps__num">1</span><span class="steps__label">上傳</span></li>
+      <li class="steps__item is-current" aria-current="step"><span class="steps__num">2</span><span class="steps__label">確認</span></li>
+      <li class="steps__item"><span class="steps__num">3</span><span class="steps__label">自評</span></li>
+      <li class="steps__item"><span class="steps__num">4</span><span class="steps__label">分析</span></li>
+      <li class="steps__item"><span class="steps__num">5</span><span class="steps__label">報告</span></li>
+    </ol>
+
+    <h1>確認履歷內容</h1>
+    <p class="rv-lead">請確認系統讀到的內容是否正確；沒寫的欄位不會被推測。</p>
+
+    <div id="state"></div>
+
+    <div id="editor" hidden>
+      <div id="rv-banner"></div>
+      <div id="rv-flaglist"></div>
+      <div id="rv-sections"></div>
+    </div>
+  </main>
+
+  <div class="rv-bar" id="rv-bar" hidden>
+    <p class="rv-bar__note" id="rv-note">確認後會刪除您上傳的原始 PDF，之後分析只使用這裡的內容。</p>
+    <p class="rv-bar__status" id="rv-status" role="status" aria-live="polite"></p>
+    <div class="rv-bar__actions">
+      <button class="btn btn--secondary" id="btn-save" type="button">儲存草稿</button>
+      <button class="btn btn--primary" id="btn-confirm" type="button">確認並繼續</button>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="vendor/supabase-js-2.45.4.umd.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/review.js"></script>
+</body>
+</html>

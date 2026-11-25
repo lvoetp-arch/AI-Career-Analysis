@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "analysis_result.schema.json",
+  "title": "AnalysisResult (LLM 職涯分析輸出) v0.1 DRAFT",
+  "description": "後端以此驗證 LLM 回傳。核心規則：恰好 3 個方向；每個結論必須引用履歷或自評證據；不足就標 insufficient，不得硬編。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "directions", "data_gaps"],
+  "$defs": {
+    "evidence_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "path"],
+      "properties": {
+        "source": { "type": "string", "enum": ["resume", "self_rating", "preference", "autobiography"] },
+        "path": { "type": "string", "description": "指向輸入資料的位置，如 work_experience[0]、skills[3]、job_preferences.salary_expectation" },
+        "note": { "type": ["string", "null"], "maxLength": 120 }
+      }
+    },
+    "strength": {
+      "type": "string",
+      "enum": ["sufficient", "partial", "insufficient"],
+      "description": "顯示為 充分／部分／不足"
+    },
+    "fit_level": {
+      "type": "string",
+      "enum": ["match", "partial", "mismatch", "unknown"]
+    },
+    "alternative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role_name", "transfer", "gap", "validation", "evidence_refs"],
+      "properties": {
+        "role_name": { "type": "string", "pattern": "\\S", "maxLength": 60 },
+        "skill_bridge": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source_skill", "adjacent_skill"],
+          "properties": {
+            "source_skill": { "type": "string", "pattern": "\\S", "maxLength": 80 },
+            "adjacent_skill": { "type": "string", "pattern": "\\S", "maxLength": 80 }
+          }
+        },
+        "transfer": { "type": "string", "pattern": "\\S", "maxLength": 140 },
+        "gap": { "type": "string", "pattern": "\\S", "maxLength": 120 },
+        "validation": { "type": "string", "pattern": "\\S", "maxLength": 160 },
+        "success_criteria": { "type": "string", "pattern": "\\S", "maxLength": 180 },
+        "evidence_refs": { "type": "array", "minItems": 1, "maxItems": 2, "items": { "$ref": "#/$defs/evidence_ref" } }
+      }
+    },
+    "discovered_alternative": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role_name", "discovery_type", "work_problem", "why_new", "skill_bridge", "transfer", "application_readiness", "readiness_reason", "gap", "validation", "success_criteria"],
+      "properties": {
+        "role_name": { "$ref": "#/$defs/alternative/properties/role_name" },
+        "discovery_type": { "enum": ["直接遷移", "相鄰延伸", "能力重組"] },
+        "work_problem": { "type": "string", "pattern": "\\S", "maxLength": 180 },
+        "why_new": { "type": "string", "pattern": "\\S", "maxLength": 180 },
+        "skill_bridge": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["source_skills", "adjacent_skill"],
+          "properties": {
+            "source_skills": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 5,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["skill", "evidence_refs"],
+                "properties": {
+                  "skill": { "$ref": "#/$defs/alternative/properties/skill_bridge/properties/source_skill" },
+                  "evidence_refs": { "$ref": "#/$defs/alternative/properties/evidence_refs" }
+                }
+              }
+            },
+            "adjacent_skill": { "$ref": "#/$defs/alternative/properties/skill_bridge/properties/adjacent_skill" }
+          }
+        },
+        "transfer": { "type": "string", "pattern": "\\S", "maxLength": 300 },
+        "application_readiness": { "enum": ["可嘗試投遞", "驗證後投遞", "長期探索"] },
+        "readiness_reason": { "type": "string", "pattern": "\\S", "maxLength": 180 },
+        "gap": { "type": "string", "pattern": "\\S", "maxLength": 220 },
+        "validation": { "type": "string", "pattern": "\\S", "maxLength": 300 },
+        "success_criteria": { "$ref": "#/$defs/alternative/properties/success_criteria" }
+      },
+      "if": { "properties": { "discovery_type": { "const": "能力重組" } } },
+      "then": { "properties": { "skill_bridge": { "properties": { "source_skills": { "minItems": 2 } } } } }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "deliverable"],
+      "properties": {
+        "action": { "type": "string", "maxLength": 160 },
+        "deliverable": { "type": "string", "maxLength": 120, "description": "做完要產出什麼，使其可檢驗" },
+        "success_criteria": { "type": "string", "pattern": "\\S", "maxLength": 180, "description": "如何判斷產出或測試結果足以支持方向" },
+        "decision_rule": { "type": "string", "pattern": "\\S", "maxLength": 180, "description": "達標與未達標時各採取什麼下一步" }
+      }
+    }
+  },
+  "properties": {
+    "schema_version": { "const": "0.1" },
+    "career_overview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assessment", "first_move"],
+      "anyOf": [{"required": ["alternative"]}, {"required": ["alternatives"]}],
+      "properties": {
+        "assessment": { "type": "string", "minLength": 1, "maxLength": 450 },
+        "first_move": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "alternative_strategy": { "const": "skill_bridge" },
+        "alternative": { "type": "string", "minLength": 1, "maxLength": 300 },
+        "alternatives": { "type": "array", "maxItems": 3, "items": { "anyOf": [{ "$ref": "#/$defs/alternative" }, { "$ref": "#/$defs/discovered_alternative" }] } }
+      }
+    },
+
+    "directions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rank", "role_name", "summary", "fit_evidence", "gaps", "preference_fit", "risks", "action_plan"],
+        "properties": {
+          "rank": { "type": "integer", "minimum": 1, "maximum": 3 },
+          "role_name": { "type": "string", "maxLength": 60, "description": "值得探索的方向，不是保證錄取的職缺" },
+          "summary": { "type": "string", "maxLength": 300 },
+
+          "fit_evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["claim", "evidence_refs", "strength"],
+              "properties": {
+                "claim": { "type": "string", "maxLength": 200, "description": "例如：具備 Python 後端實作經驗" },
+                "evidence_refs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/evidence_ref" } },
+                "strength": { "$ref": "#/$defs/strength" },
+                "strength_reason": { "type": "string", "maxLength": 160, "description": "為何是充分／部分／不足" }
+              }
+            }
+          },
+
+          "gaps": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["skill", "why_it_matters", "priority"],
+              "properties": {
+                "skill": { "type": "string", "maxLength": 60 },
+                "current_self_level": { "type": ["integer", "null"], "minimum": 1, "maximum": 5, "description": "使用者自評，沒評則 null" },
+                "why_it_matters": { "type": "string", "maxLength": 200 },
+                "priority": { "type": "string", "enum": ["high", "medium", "low"] }
+              }
+            }
+          },
+
+          "preference_fit": {
+            "type": "object",
+            "additionalProperties": false,
+            "description": "方向與使用者條件的吻合度。只比對使用者自己給的條件；沒有市場資料時不得宣稱薪資行情，填 unknown。",
+            "required": ["employment_type", "work_mode", "salary", "schedule"],
+            "properties": {
+              "employment_type": { "$ref": "#/$defs/fit_level" },
+              "work_mode": { "$ref": "#/$defs/fit_level" },
+              "salary": { "$ref": "#/$defs/fit_level" },
+              "schedule": { "$ref": "#/$defs/fit_level" },
+              "note": { "type": ["string", "null"], "maxLength": 200 }
+            }
+          },
+
+          "risks": {
+            "type": "array",
+            "items": { "type": "string", "maxLength": 160 },
+            "description": "風險與不確定性"
+          },
+
+          "action_plan": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["day_30", "day_60", "day_90"],
+            "properties": {
+              "day_30": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "$ref": "#/$defs/action" } },
+              "day_60": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "$ref": "#/$defs/action" } },
+              "day_90": { "type": "array", "minItems": 1, "maxItems": 3, "items": { "$ref": "#/$defs/action" } }
+            }
+          }
+        }
+      }
+    },
+
+    "data_gaps": {
+      "type": "array",
+      "description": "輸入資料不足或矛盾之處，提示使用者補充；沒有則為空陣列",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["topic", "message"],
+        "properties": {
+          "topic": { "type": "string", "maxLength": 60 },
+          "message": { "type": "string", "maxLength": 160 }
+        }
+      }
+    }
+  }
+}

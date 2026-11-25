@@ -1,0 +1,812 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "resume_profile.schema.json",
+  "title": "ResumeProfile (resume_profiles.parsed_json) v0.3 DRAFT",
+  "description": "LLM 從履歷抽取的結構化結果。原則：(1) 只抽取履歷上寫到的內容，沒寫就填 null 或空陣列，禁止推測；(2) 不收錄敏感個資（見 x-not-collected），這些欄位在 Schema 中不存在，additionalProperties=false 使其無法被寫入；(3) 不計算總年資、不判斷空窗期，留給真人資提問。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "basics",
+    "work_experience",
+    "education",
+    "skills",
+    "projects",
+    "portfolio",
+    "job_preferences",
+    "autobiography",
+    "missing_flags",
+    "awards"
+  ],
+  "$defs": {
+    "ym": {
+      "description": "日期：YYYY-MM 或 YYYY，未寫為 null",
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[0-9]{4}(-(0[1-9]|1[0-2]))?$"
+    },
+    "src": {
+      "description": "履歷原文片段（供使用者核對，限 200 字）",
+      "type": [
+        "string",
+        "null"
+      ],
+      "maxLength": 200
+    },
+    "employment_type": {
+      "type": "string",
+      "enum": [
+        "full_time",
+        "part_time",
+        "contract",
+        "internship",
+        "freelance",
+        "unknown"
+      ]
+    },
+    "work_mode": {
+      "type": "string",
+      "enum": [
+        "onsite",
+        "remote",
+        "hybrid"
+      ]
+    }
+  },
+  "properties": {
+    "schema_version": {
+      "const": "0.3"
+    },
+    "language": {
+      "type": "string",
+      "description": "履歷主要語言，如 zh-TW、en"
+    },
+    "basics": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "只保留與職涯分析有關的自我介紹與連結。聯絡方式與身分資料一律不收；帳號 Email 由 Supabase Auth 管理。",
+      "properties": {
+        "headline": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "履歷自寫的職稱或一句話介紹"
+        },
+        "links": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "label": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "work_experience": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "company",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "穩定 ID，供證據引用，如 work-1"
+          },
+          "company": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "employment_type": {
+            "$ref": "#/$defs/employment_type"
+          },
+          "start": {
+            "$ref": "#/$defs/ym"
+          },
+          "end": {
+            "$ref": "#/$defs/ym"
+          },
+          "is_current": {
+            "type": "boolean"
+          },
+          "location": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "responsibilities": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "achievements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "tools_used": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "source_text": {
+            "$ref": "#/$defs/src"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "employment",
+              "self_employed",
+              "freelance",
+              "other"
+            ],
+            "description": "受僱／自營（個人專案、自營店）／接案；履歷沒寫清楚用 other"
+          },
+          "industry": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "104 的產業別原文，如「金屬家具及裝設品製造業」"
+          },
+          "company_size": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "原文，如「1~30人」「500人以上」"
+          },
+          "job_category": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "104 的職類原文，如「工業設計師」"
+          },
+          "management_scope": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "原文，如「管理4人以下」"
+          },
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "履歷上的 #標籤"
+          },
+          "related_project_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "此段經歷中提到的專案 ID"
+          }
+        }
+      }
+    },
+    "education": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "school"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "school": {
+            "type": "string"
+          },
+          "degree": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "field": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "start": {
+            "$ref": "#/$defs/ym"
+          },
+          "end": {
+            "$ref": "#/$defs/ym"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "graduated",
+              "in_progress",
+              "dropped",
+              "unknown"
+            ]
+          },
+          "source_text": {
+            "$ref": "#/$defs/src"
+          }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "category": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "如 程式語言、框架、設計、語言、證照相關"
+          },
+          "stated_level_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "履歷自己寫的程度原文，如「熟悉」「精通」；不得轉成數字"
+          },
+          "years_text": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "履歷自己寫的年資原文"
+          },
+          "linked_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "此技能出現在哪些經歷或專案（work-1、project-2）；空陣列代表只列在技能欄、無實作佐證"
+          },
+          "source_text": {
+            "$ref": "#/$defs/src"
+          },
+          "group": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "履歷專長區的分組標題，如「AI 應用與 SaaS 開發」"
+          }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "name"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "role": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "tech": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "outcomes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "start": {
+            "$ref": "#/$defs/ym"
+          },
+          "end": {
+            "$ref": "#/$defs/ym"
+          },
+          "source_text": {
+            "$ref": "#/$defs/src"
+          },
+          "source_section": {
+            "type": "string",
+            "enum": [
+              "work_experience",
+              "achievements",
+              "autobiography",
+              "other"
+            ],
+            "description": "同一專案常重複出現在工作經歷、專案成就、自傳；解析時合併為一筆，這裡記錄最完整那段的來源"
+          }
+        }
+      }
+    },
+    "portfolio": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "title"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string",
+            "enum": [
+              "website",
+              "app",
+              "code_repo",
+              "design",
+              "writing",
+              "video",
+              "document",
+              "other"
+            ]
+          },
+          "url": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "description": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_text": {
+            "$ref": "#/$defs/src"
+          },
+          "url_truncated": {
+            "type": "boolean",
+            "description": "PDF 顯示文字的網址被截斷（以…結尾）且無法從連結註記取得完整網址"
+          }
+        }
+      }
+    },
+    "certifications": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "issuer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "date": {
+            "$ref": "#/$defs/ym"
+          }
+        }
+      }
+    },
+    "languages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "language"
+        ],
+        "properties": {
+          "language": {
+            "type": "string"
+          },
+          "overall": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "listening": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "speaking": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "reading": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "writing": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "job_preferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "履歷上寫明的求職條件。這是「履歷聲明」，使用者在確認與自評頁可修改，確認後同步到 career_preferences。",
+      "properties": {
+        "desired_roles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "employment_types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/employment_type"
+          }
+        },
+        "work_modes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/work_mode"
+          }
+        },
+        "preferred_locations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "salary_expectation": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "min": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "max": {
+              "type": [
+                "number",
+                "null"
+              ]
+            },
+            "currency": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "如 TWD"
+            },
+            "period": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "enum": [
+                "monthly",
+                "yearly",
+                "hourly",
+                "negotiable",
+                null
+              ]
+            },
+            "raw_text": {
+              "type": "string",
+              "description": "原文，如「面議」「月薪 5 萬以上」"
+            }
+          },
+          "required": [
+            "raw_text"
+          ]
+        },
+        "availability": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "earliest_start": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "description": "到職時間原文或日期"
+            },
+            "notice_period": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          }
+        },
+        "leave_and_schedule": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "休假方式、輪班、工時等原文（如「週休二日」「可配合輪班」），不強行分類"
+        },
+        "other_conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source_text": {
+          "$ref": "#/$defs/src"
+        },
+        "desired_job_categories": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "希望職類（與希望職稱是 104 的不同分類）"
+        },
+        "desired_industries": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "shift": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "description": "上班時段原文，如「日班」"
+        },
+        "remote_willingness": {
+          "type": "string",
+          "enum": [
+            "preferred",
+            "willing",
+            "not_willing",
+            "unknown"
+          ],
+          "description": "遠端意願。「有意願」= willing，不等於偏好遠端；沒寫 = unknown"
+        }
+      }
+    },
+    "autobiography": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "自傳／自我介紹。保留原文供分析參照；抽取的 stated_goals、stated_motivations 只能是文中明寫的內容，不得代為推論性格。",
+      "properties": {
+        "text": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "maxLength": 6000
+        },
+        "stated_goals": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stated_motivations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "stated_strengths": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "text"
+            ],
+            "properties": {
+              "heading": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "text": {
+                "type": "string"
+              },
+              "language": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            }
+          },
+          "description": "依【】標題或段落切分；中英雙語重複段落保留，language 標明，分析時只取一種語言"
+        }
+      }
+    },
+    "missing_flags": {
+      "type": "array",
+      "description": "只提示「解析不到或缺少分析所需資料」；不提示年資加總、空窗期或其他需要人資判斷的事",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "field_path",
+          "reason",
+          "message"
+        ],
+        "properties": {
+          "field_path": {
+            "type": "string",
+            "description": "JSON path，如 work_experience[1].end"
+          },
+          "reason": {
+            "type": "string",
+            "enum": [
+              "missing",
+              "ambiguous",
+              "unparseable",
+              "truncated"
+            ]
+          },
+          "message": {
+            "type": "string",
+            "maxLength": 120,
+            "description": "給使用者看的白話提示"
+          }
+        }
+      }
+    },
+    "awards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "year": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "issuer": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "related_project_id": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "source_text": {
+            "$ref": "#/$defs/src"
+          }
+        }
+      }
+    },
+    "parse_notes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "解析過程記錄，如 unicode_nfkc_applied、link_annotations_used、bilingual_sections_merged"
+    }
+  },
+  "x-not-collected": [
+    "姓名",
+    "性別",
+    "年齡／生日",
+    "役別",
+    "婚姻／家庭",
+    "照片",
+    "電話",
+    "Email",
+    "住址",
+    "身分證字號",
+    "國籍",
+    "宗教",
+    "健康狀況",
+    "就業狀態（待業等）",
+    "交通工具",
+    "聯絡時段"
+  ]
+}

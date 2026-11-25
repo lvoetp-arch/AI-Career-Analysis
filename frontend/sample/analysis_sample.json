@@ -1,0 +1,238 @@
+{
+  "status": "succeeded",
+  "result": {
+    "schema_version": "0.1",
+    "career_overview": {
+      "assessment": "盤點、進貨紀錄與交接經驗可以一起用在營運資料分析。履歷已有資料整理的例子，但還需證明別人能閱讀報表、重跑流程，才能把這段經驗轉成職缺看得懂的成果。",
+      "first_move": "先試營運資料分析類職缺，主打盤點及進貨紀錄。用一張可重跑的庫存報表證明交接能力。如果實際更偏好供應商協調，再提高採購助理的順位。",
+      "alternative_strategy": "skill_bridge",
+      "alternatives": [
+        {
+          "role_name": "庫存內控助理",
+          "discovery_type": "相鄰延伸",
+          "work_problem": "在帳實不符時找出差異來源，留下可複核的處理紀錄。",
+          "why_new": "主要責任是設計差異通報與複核流程。",
+          "skill_bridge": {
+            "source_skills": [
+              {"skill": "盤點與進貨紀錄比對", "evidence_refs": [{"source": "resume", "path": "work_experience[0]"}]}
+            ],
+            "adjacent_skill": "庫存例外處理流程設計"
+          },
+          "transfer": "盤點時已做過確認差異與記錄來源，可以沿用這些步驟，為庫存內控設計差異通報、複核和結案流程。",
+          "application_readiness": "驗證後投遞",
+          "readiness_reason": "已有差異紀錄經驗，仍需驗證設計例外處理流程的能力。",
+          "gap": "還需證明能找出差異原因，並設計例外通報與複核流程。",
+          "validation": "用虛構進貨紀錄做一張差異追蹤表，加入通報、複核與結案步驟，再請營運同事用它處理一筆差異。",
+          "success_criteria": "同事能依表格重現差異原因，並指出應由誰複核、何時能結案。"
+        },
+        {
+          "role_name": "營運教育訓練助理",
+          "discovery_type": "相鄰延伸",
+          "work_problem": "讓新人依標準步驟獨立完成到貨登記。",
+          "why_new": "主要交付成果是可測試的新人教材與操作指引。",
+          "skill_bridge": {
+            "source_skills": [
+              {"skill": "例行交接", "evidence_refs": [{"source": "resume", "path": "work_experience[0]"}]}
+            ],
+            "adjacent_skill": "門店操作教材設計"
+          },
+          "transfer": "例行交接已需要說清作業順序和注意事項，能用同一套拆解方式，把到貨登記寫成新人可以照做的指南。",
+          "application_readiness": "驗證後投遞",
+          "readiness_reason": "已有交接經驗，仍需驗證教材能否讓新人獨立完成任務。",
+          "gap": "目前有交接經驗，還需證明能設計教學步驟並依使用者卡住的地方調整內容。",
+          "validation": "做一頁到貨登記指南，請一位沒做過的人用虛構資料照步驟操作，記下需要口頭提示的地方。",
+          "success_criteria": "新人可以依指南獨立完成一次登記，並說明遇到數量不符時該怎麼處理。"
+        }
+      ]
+    },
+    "directions": [
+      {
+        "rank": 1,
+        "role_name": "營運資料分析",
+        "summary": "把盤點與排班經驗用在例行資料整理，協助團隊看見需要改善的流程。",
+        "fit_evidence": [
+          {
+            "claim": "整理過品項與進貨紀錄",
+            "strength": "sufficient",
+            "strength_reason": "每週整理庫存並比對到貨數量，有可檢視的流程與產出。",
+            "evidence_refs": [
+              {
+                "source": "resume",
+                "path": "work_experience[0]",
+                "note": "虛構履歷記載每週盤點、進貨整理與例行交接。"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          {
+            "skill": "資料視覺化",
+            "current_self_level": 2,
+            "why_it_matters": "用圖表讓庫存變化更容易閱讀。",
+            "priority": "high"
+          }
+        ],
+        "preference_fit": {
+          "salary": "unknown",
+          "employment_type": "match",
+          "work_mode": "partial",
+          "schedule": "unknown",
+          "note": "範例優先探索全職工作，實際工作條件仍須向雇主確認。"
+        },
+        "risks": [
+          "履歷尚未描述如何驗證報表的準確性。"
+        ],
+        "action_plan": {
+          "day_30": [
+            {
+              "action": "整理七天的虛構進貨資料",
+              "deliverable": "欄位定義與可重跑的清理表"
+            }
+          ],
+          "day_60": [
+            {
+              "action": "製作庫存趨勢圖",
+              "deliverable": "附圖例與更新日期的單頁儀表板"
+            }
+          ],
+          "day_90": [
+            {
+              "action": "請一位讀者重跑報表",
+              "deliverable": "紀錄讀者遇到的問題與修訂清單"
+            }
+          ]
+        }
+      },
+      {
+        "rank": 2,
+        "role_name": "採購助理",
+        "summary": "從進貨記錄與供應商聯繫切入，練習把查詢、比價與交付資訊整理在一起。",
+        "fit_evidence": [
+          {
+            "claim": "熟悉進貨資訊的例行整理",
+            "strength": "partial",
+            "strength_reason": "已有庫存紀錄，但履歷未列出比價、詢價或供應商評估的例子。",
+            "evidence_refs": [
+              {
+                "source": "resume",
+                "path": "work_experience[0]",
+                "note": "虛構履歷記載每週盤點、進貨整理與例行交接。"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          {
+            "skill": "採購詢價",
+            "current_self_level": null,
+            "why_it_matters": "留下可以比較不同交期與條件的書面紀錄。",
+            "priority": "medium"
+          }
+        ],
+        "preference_fit": {
+          "salary": "unknown",
+          "employment_type": "match",
+          "work_mode": "partial",
+          "schedule": "unknown",
+          "note": "範例優先探索全職工作，實際工作條件仍須向雇主確認。"
+        },
+        "risks": [
+          "目前無法判斷是否曾獨立與供應商議價。"
+        ],
+        "action_plan": {
+          "day_30": [
+            {
+              "action": "設計一份詢價紀錄表",
+              "deliverable": "包含交期與付款條件的空白範本"
+            }
+          ],
+          "day_60": [
+            {
+              "action": "模擬比較三家供應商",
+              "deliverable": "附取捨理由的比較單"
+            }
+          ],
+          "day_90": [
+            {
+              "action": "整理一套採購交接步驟",
+              "deliverable": "供下一位同事重跑的流程清單"
+            }
+          ]
+        }
+      },
+      {
+        "rank": 3,
+        "role_name": "服務流程設計",
+        "summary": "把日常行政經驗轉成流程圖，找出同事交接最容易遺漏的資訊。",
+        "fit_evidence": [
+          {
+            "claim": "有交接情境可作為流程觀察起點",
+            "strength": "insufficient",
+            "strength_reason": "履歷提到整理盤點工作，尚無實際訪談或改善前後的紀錄。",
+            "evidence_refs": [
+              {
+                "source": "resume",
+                "path": "work_experience[0]",
+                "note": "虛構履歷記載每週盤點、進貨整理與例行交接。"
+              }
+            ]
+          }
+        ],
+        "gaps": [
+          {
+            "skill": "流程訪談",
+            "current_self_level": 1,
+            "why_it_matters": "用具體案例找出現況與交接障礙。",
+            "priority": "high"
+          }
+        ],
+        "preference_fit": {
+          "salary": "unknown",
+          "employment_type": "match",
+          "work_mode": "partial",
+          "schedule": "unknown",
+          "note": "範例優先探索全職工作，實際工作條件仍須向雇主確認。"
+        },
+        "risks": [
+          "流程改善需要實際驗證，範例中尚無測試結果。"
+        ],
+        "action_plan": {
+          "day_30": [
+            {
+              "action": "畫出一條盤點交接流程",
+              "deliverable": "一張標註角色與交付物的流程圖"
+            }
+          ],
+          "day_60": [
+            {
+              "action": "訪談兩位模擬交接角色",
+              "deliverable": "一份去識別化的觀察紀錄"
+            }
+          ],
+          "day_90": [
+            {
+              "action": "測試一版交接清單",
+              "deliverable": "一份修正前後的對照表"
+            }
+          ]
+        }
+      }
+    ],
+    "data_gaps": [
+      {
+        "topic": "流程改善的成果",
+        "message": "可補充做過哪些整理、如何檢查成果，以及交接的人是否能重跑。"
+      }
+    ]
+  },
+  "evidence_labels": {
+    "resume": {
+      "work_experience[0]": "工作經歷：虛構紙飛機文具店"
+    }
+  },
+  "evidence_excerpts": {
+    "resume": {
+      "work_experience[0]": "每週盤點、整理進貨紀錄與例行交接。"
+    }
+  }
+}

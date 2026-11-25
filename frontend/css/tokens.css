@@ -1,0 +1,48 @@
+/* 職話直說 設計規範：色碼取自模板截圖，已實測對比度（見 docs/handoff/S1_contrast.md） */
+:root {
+  /* 色彩 */
+  --bg: #F7F0DA;
+  --surface: #FDFCF4;
+  --ink: #100C08;
+  --ink-muted: #4A4338;
+  --yellow: #E9F037;
+  --pink: #FFB3D7;
+  --red: #F44123;          /* 只當背景／邊框／填色，不當小字色 */
+  --red-text: #BC2610;     /* 需要紅字或危險按鈕底色時使用 */
+  --blue: #1879F9;
+  --blue-deep: #0B4FB3;    /* 小標籤底色（配 --surface 字） */
+  --disabled-bg: #DDD6C0;
+  --disabled-text: #5B5444;
+
+  /* 狀態色 */
+  --success: #1E7A34;  --success-bg: #DDF3D3;
+  --warn: #8A6A00;     --warn-bg: #FFF6B8;
+  --error: #BC2610;    --error-bg: #FFDDD6;
+  --info: #0B4FB3;     --info-bg: #DCEBFF;
+
+  /* 造型 */
+  --bw: 3px;
+  --bw-thin: 2px;
+  --shadow-sm: 4px 4px 0 var(--ink);
+  --shadow: 6px 6px 0 var(--ink);
+  --focus-ring: 3px solid var(--blue-deep);
+  --tap: 44px;
+
+  /* 間距 */
+  --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px; --s8: 72px;
+
+  /* 字型與字級 */
+  --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-md: 1.125rem;
+  --fs-lg: 1.5rem;
+  --fs-xl: 2rem;
+  --fs-hero: clamp(2.5rem, 9vw, 4.5rem);
+  --fw-regular: 400; --fw-medium: 500; --fw-bold: 700; --fw-black: 900;
+  --lh: 1.65;
+
+  /* 斷點（媒體查詢無法用變數，僅供參考）：360 / 768 / 1200 */
+  --container: 1200px;
+}

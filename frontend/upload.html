@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>上傳履歷｜職話直說</title>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/upload.css">
+  <link rel="stylesheet" href="css/site-refresh.css">
+</head>
+<body data-page="upload">
+  <header class="site-header">
+    <div class="site-header__inner u-wrap" style="padding-block:var(--s3)">
+      <a class="logo" href="index.html">職話直說</a>
+    </div>
+  </header>
+
+  <main class="u-wrap">
+    <ol class="steps" aria-label="流程步驟">
+      <li class="steps__item is-current" aria-current="step"><span class="steps__num">1</span><span class="steps__label">上傳</span></li>
+      <li class="steps__item"><span class="steps__num">2</span><span class="steps__label">確認</span></li>
+      <li class="steps__item"><span class="steps__num">3</span><span class="steps__label">自評</span></li>
+      <li class="steps__item"><span class="steps__num">4</span><span class="steps__label">分析</span></li>
+      <li class="steps__item"><span class="steps__num">5</span><span class="steps__label">報告</span></li>
+    </ol>
+
+    <h1>上傳你的履歷</h1>
+
+    <div class="alert alert--warn" role="note">
+      <div>
+        <p class="alert__title">這是測試版本，請勿上傳含真實個資的履歷。</p>
+        <p>本服務目前使用免費額度的 AI 服務，送出的內容可能被供應商用於改善產品並由人工審閱。<a href="privacy.html">閱讀隱私說明</a></p>
+      </div>
+    </div>
+
+    <div id="form-area">
+      <div class="field">
+        <label class="field__label" for="file-input">履歷檔案</label>
+        <div class="dropzone" id="dropzone">
+          <input type="file" id="file-input" accept="application/pdf,.pdf" aria-describedby="file-hint">
+          <span class="dropzone__title" id="dz-title">拖曳 PDF 到這裡，或點一下選擇檔案</span>
+          <span class="u-file" id="dz-file"></span>
+        </div>
+        <p class="field__hint" id="file-hint">僅限文字型 PDF（可以選取文字的檔案）；5MB 以內、10 頁以內、不可加密。掃描檔與圖片檔目前不支援。</p>
+        <p class="field__error" id="file-error" role="alert" hidden></p>
+      </div>
+
+      <div class="field">
+        <label class="field__label" for="name-input">你的姓名寫法（選填）</label>
+        <input class="input" id="name-input" type="text" maxlength="120" autocomplete="off" aria-describedby="name-hint" placeholder="例如：王小明, Ming Wang">
+        <p class="field__hint" id="name-hint">只用來在送出前遮蔽履歷中的姓名，不會儲存。最多 3 種寫法，用逗號分隔；留空則姓名可能原樣送出。</p>
+      </div>
+
+      <div class="u-actions">
+        <button class="btn btn--primary" id="submit-btn" type="button" disabled>上傳並解析</button>
+      </div>
+    </div>
+
+    <div class="state" id="busy" role="status" aria-live="polite" hidden>
+      <div class="u-busy"><span class="spinner" aria-hidden="true"></span><p class="state__title">正在解析履歷…</p></div>
+      <p class="state__msg">通常需要數十秒，請不要關閉頁面。</p>
+    </div>
+
+    <div class="state state--error" id="error-box" role="alert" hidden>
+      <p class="state__title" id="error-title">上傳沒有成功</p>
+      <p class="state__msg" id="error-msg"></p>
+      <div class="u-actions"><a class="btn btn--secondary" id="error-link" href="privacy.html?next=upload.html" hidden>前往隱私說明</a></div>
+    </div>
+
+    <div class="state state--success" id="success-box" role="status" hidden>
+      <p class="state__title">履歷解析完成</p>
+      <p class="state__msg" id="success-msg"></p>
+      <div class="u-actions"><a class="btn btn--primary" href="review.html">前往確認內容</a></div>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="vendor/supabase-js-2.45.4.umd.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/upload.js?v=consent-current"></script>
+</body>
+</html>
